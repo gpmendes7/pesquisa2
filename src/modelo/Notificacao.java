@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Notificacao {
@@ -192,6 +193,8 @@ public class Notificacao {
 	private String codigoResultadoTesteSorologicoIgA;
 	@Column(columnDefinition="TEXT")
 	private String codigoComunidadeTradicional;
+	@ManyToOne
+	private Paciente paciente;
 	
 	public Notificacao() {
 	}
@@ -312,6 +315,10 @@ public class Notificacao {
 		this.codigoResultadoTesteSorologicoTotais = codigoResultadoTesteSorologicoTotais;
 		this.codigoResultadoTesteSorologicoIgA = codigoResultadoTesteSorologicoIgA;
 		this.codigoComunidadeTradicional = codigoComunidadeTradicional;
+	}
+	
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	
 	@Override
