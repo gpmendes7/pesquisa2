@@ -67,10 +67,10 @@ public class SalvarNotificacoes {
 		//lerCSVESalvarNoBanco("./arquivos/csv/sus_1.csv");
 		//lerCSVESalvarNoBanco("./arquivos/csv/sus_2.csv");
 		//lerCSVESalvarNoBanco("./arquivos/csv/sus_3.csv");
-		lerCSVESalvarNoBanco("./arquivos/csv/sus_4.csv");
+		//lerCSVESalvarNoBanco("./arquivos/csv/sus_4.csv");
 		//lerCSVESalvarNoBanco("./arquivos/csv/sus_5.csv");
 		//lerCSVESalvarNoBanco("./arquivos/csv/sus_6.csv");
-		//lerCSVESalvarNoBanco("./arquivos/csv/sus_7.csv");
+		lerCSVESalvarNoBanco("./arquivos/csv/sus_7.csv");
 		
 		em.getTransaction().commit();
 		
