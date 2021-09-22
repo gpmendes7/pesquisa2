@@ -4,8 +4,11 @@ select count(id) from notificacao;
 -- total de registros com cpf
 select count(id) from notificacao where cpf != '';
 
--- total de registros sem cpf
+-- total de registros com cpf em branco
 select count(id) from notificacao where cpf = '';
+
+-- total de registros com cpf nulo
+select count(id) from notificacao where cpf is null;
 
 -- total de registros com nomeCompleto
 select count(id) from notificacao where nomeCompleto != '';
