@@ -4,14 +4,20 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
@@ -20,16 +26,23 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import modelo.Notificacao;
+import modelo.Paciente;
 import modelo.Sus;
 
+public class SalvarBase {
 
-public class SalvarNotificacoes {
 	
-	private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionMappingStrategy<Sus>();;
+private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionMappingStrategy<Sus>();;
 	
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("sus");
 	private static EntityManager em = emf.createEntityManager();
-
+	
+	private static long totalNotificacoes = 0;
+	private static long totalPacientes = 0;
+	private static long lote = 1000;
+	
+	private static Map<String, Long> map = new HashMap<>();
+	
 	public static void main(String[] args)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, ParseException {
 	
@@ -60,7 +73,7 @@ public class SalvarNotificacoes {
 							 "codigoComunidadeTradicional" };
  
 		strategy.setColumnMapping(colunas);
-			
+
 		lerCSVESalvarNoBanco("./arquivos/csv/sus_0.csv");
 		lerCSVESalvarNoBanco("./arquivos/csv/sus_1.csv");
 		lerCSVESalvarNoBanco("./arquivos/csv/sus_2.csv");
@@ -70,14 +83,22 @@ public class SalvarNotificacoes {
 		lerCSVESalvarNoBanco("./arquivos/csv/sus_6.csv");
 		lerCSVESalvarNoBanco("./arquivos/csv/sus_7.csv");
 		
+		System.out.println("Total de notificações: " + totalNotificacoes);
+		System.out.println("Total de pacientes: " + totalPacientes);
 		
 		em.close();
 		emf.close();
 	}
 	
+	public static String removeAcentos(String string) {
+		return Normalizer.normalize(string, Normalizer.Form.NFD)
+						 .replaceAll("[^\\p{ASCII}]", "");
+	}
+	
 	public static void lerCSVESalvarNoBanco(String nomeArquivo) throws IOException, ParseException {
 		try (Reader reader = Files.newBufferedReader(Paths.get(nomeArquivo));) {
-			em.getTransaction().begin();
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
 			
 			CsvToBean<Sus> csvToBean = new CsvToBeanBuilder<Sus>(reader)
 											.withMappingStrategy(strategy)
@@ -87,19 +108,51 @@ public class SalvarNotificacoes {
 			
 			Iterator<Sus> iterator = csvToBean.iterator();
 			
-			long totalNotificacoesSalvas = 0;
-	
 			while(iterator.hasNext()) {
 				Sus sus = iterator.next();
-				em.persist(gerarNotificacao(sus));
-				totalNotificacoesSalvas++;
-			}
-			
-			em.flush();
-			em.clear();
-			em.getTransaction().commit();
+				Notificacao notificacao = gerarNotificacao(sus);
 				
-			System.out.println("Total de notificações salvas (" + nomeArquivo + "): " + totalNotificacoesSalvas);
+				String chave = removeAcentos(notificacao.getNomeCompleto().trim()) + notificacao.getCpf().trim() + notificacao.getDataNascimento();
+				Long pacienteId = map.get(chave);
+				Paciente paciente = null;
+				
+				if(pacienteId == null) {
+					totalPacientes++;
+					paciente = gerarPaciente(notificacao);
+					paciente.setId(totalPacientes);
+					em.persist(paciente);
+					map.put(chave, paciente.getId());
+				} else {
+					paciente = new Paciente();
+					paciente.setId(pacienteId);
+				}
+				
+				/*
+				List<Paciente> resultado = obterPacienteNotificacao(notificacao);
+				Paciente paciente = null;
+				
+				if(resultado.size() == 0) {
+					paciente = gerarPaciente(notificacao);
+					em.persist(paciente);
+				} else {
+					paciente = resultado.get(0);
+				}*/
+				
+				notificacao.setPaciente(paciente);
+				em.persist(notificacao);
+				totalNotificacoes++;
+				
+				System.out.println(totalNotificacoes);
+				
+				if(totalNotificacoes % lote == 0) {
+					em.flush();
+					em.clear();
+					tx.commit();	
+					tx.begin();
+				}
+			}
+				
+			tx.commit();					
 		}
 	}
 	
@@ -143,5 +196,48 @@ public class SalvarNotificacoes {
 				sus.getCodigoCbo(), sus.getCodigoPaisOrigem(), sus.getCodigoResultadoTesteSorologicoTotais(), sus.getCodigoResultadoTesteSorologicoIgA(),
 				sus.getCodigoComunidadeTradicional());
 	}
+	
+	public static Paciente gerarPaciente(Notificacao notificacao) throws ParseException {
+		return new Paciente(notificacao.getDataNascimento(), notificacao.getDataNotificacao(), notificacao.getDataInicioSintomas(), notificacao.getDataTeste(), 
+				notificacao.getpUsuario(), notificacao.getEstrangeiro(), notificacao.getProfissionalSaude(), notificacao.getProfissionalSeguranca(), 
+				notificacao.getCbo(), notificacao.getCpf(), notificacao.getCns(), notificacao.getNomeCompleto(), 
+				notificacao.getNomeMae(), notificacao.getPaisOrigem(), notificacao.getSexo(), notificacao.getRacaCor(), 
+				notificacao.getEtnia(), notificacao.getCep(), notificacao.getPassaporte(), notificacao.getLogradouro(), 
+				notificacao.getNumero(), notificacao.getComplemento(), notificacao.getBairro(), notificacao.getEstado(), 
+				notificacao.getMunicipio(), notificacao.getTelefoneContato(), notificacao.getTelefone(), notificacao.getSintomas(),
+				notificacao.getOutrosSintomas(), notificacao.getCondicoes(), notificacao.getEstadoTeste(), notificacao.getTipoTeste(), 
+				notificacao.getTesteSorologico(), notificacao.getDataTesteSorologico(), notificacao.getResultadoTeste(), notificacao.getTipoTesteSorologico(),
+				notificacao.getResultadoTesteSorologicoIgA(), notificacao.getResultadoTesteSorologicoIgG(), notificacao.getResultadoTesteSorologicoIgM(), notificacao.getResultadoTesteSorologicoTotais(),
+				notificacao.getNumeroNotificacao(), notificacao.getCnes(), notificacao.getEstadoNotificacao(), notificacao.getMunicipioNotificacao(),
+				notificacao.getOrigem(), notificacao.getNomeCompletoDesnormalizado(), notificacao.getCreatedAt(), notificacao.getUpdatedAt(),
+				notificacao.getSourceId(), notificacao.getIdade(), notificacao.getClassificacaoFinal(), notificacao.getEvolucaoCaso(),
+				notificacao.getDataEncerramento(), notificacao.getDescricaoRacaCor(), notificacao.getpUsuarioAlteracao(), notificacao.getRpa(),
+				notificacao.getIdOrigem(), notificacao.getDesnormalizarNome(), notificacao.getTimestampNotificacao(), notificacao.getEstadoIBGE(),
+				notificacao.getEstadoNotificacaoIBGE(), notificacao.getMunicipioIBGE(), notificacao.getMunicipioNotificacaoIBGE(), notificacao.getNotificadorCpf(),
+				notificacao.getNotificadorEmail(), notificacao.getNotificadorNome(), notificacao.getNotificadorCNPJ(), notificacao.getCodigoClassificacaoFinal(),
+				notificacao.getCodigoEvolucaoCaso(), notificacao.getCodigoEstadoTeste(), notificacao.getLabCnes(), notificacao.getCodigoCondicoes(),
+				notificacao.getCodigoResultadoTeste(), notificacao.getCodigoSintomas(), notificacao.getEmail(), notificacao.getComunidadeTradicional(),
+				notificacao.getContemComunidadeTradicional(), notificacao.getVersaoFormulario(), notificacao.getCodigoResultadoTesteSorologicoIgM(), notificacao.getCodigoResultadoTesteSorologicoIgG(),
+				notificacao.getCodigoTipoTesteSorologico(), notificacao.getCodigoTesteSorologico(), notificacao.getCodigoTipoTeste(), notificacao.getCodigoProfissionalSeguranca(),
+				notificacao.getCodigoProfissionalSaude(), notificacao.getCodigoTemCpf(), notificacao.getCodigoSexo(), notificacao.getCodigoEstrangeiro(),
+				notificacao.getCodigoCbo(), notificacao.getCodigoPaisOrigem(), notificacao.getCodigoResultadoTesteSorologicoTotais(), notificacao.getCodigoResultadoTesteSorologicoIgA(),
+				notificacao.getCodigoComunidadeTradicional());
+	}
+	
 
+	
+	private static List<Paciente> obterPacienteNotificacao(Notificacao notificacao) {
+		String jpql = "\n from Paciente p" 
+	                + "\n where p.nomeCompleto = ?1"
+				    + "\n and ( p.cpf = ?2 or p.dataNascimento = ?3)";
+		TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class)
+									   .setFirstResult(0)
+									   .setMaxResults(1);
+		query.setParameter(1, removeAcentos(notificacao.getNomeCompleto().trim()));
+		query.setParameter(2, notificacao.getCpf().trim());
+		query.setParameter(3, notificacao.getDataNascimento());
+		return query.getResultList();
+	}
+	
+	
 }

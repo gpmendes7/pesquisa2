@@ -124,7 +124,7 @@ public class Notificacao {
 	@Column(columnDefinition="TEXT")
 	private String desnormalizarNome;
 	@Column(columnDefinition="TEXT")
-	private String timestamp;
+	private String timestampNotificacao;
 	@Column(columnDefinition="TEXT")
 	private String estadoIBGE;
 	@Column(columnDefinition="TEXT")
@@ -133,11 +133,11 @@ public class Notificacao {
 	private String municipioIBGE;
 	@Column(columnDefinition="TEXT")
 	private String municipioNotificacaoIBGE;
-	@Column(length = 80)
+	@Column(columnDefinition="TEXT")
 	private String notificadorCpf;
-	@Column(length = 80)
+	@Column(columnDefinition="TEXT")
 	private String notificadorEmail;
-	@Column(length = 80)
+	@Column(columnDefinition="TEXT")
 	private String notificadorNome;
 	@Column(columnDefinition="TEXT")
 	private String notificadorCNPJ;
@@ -280,7 +280,7 @@ public class Notificacao {
 		this.rpa = rpa;
 		this.idOrigem = idOrigem;
 		this.desnormalizarNome = desnormalizarNome;
-		this.timestamp = timestamp;
+		this.timestampNotificacao = timestamp;
 		this.estadoIBGE = estadoIBGE;
 		this.estadoNotificacaoIBGE = estadoNotificacaoIBGE;
 		this.municipioIBGE = municipioIBGE;
@@ -321,6 +321,382 @@ public class Notificacao {
 		this.paciente = paciente;
 	}
 	
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public Date getDataNotificacao() {
+		return dataNotificacao;
+	}
+
+	public Date getDataInicioSintomas() {
+		return dataInicioSintomas;
+	}
+
+	public Date getDataTeste() {
+		return dataTeste;
+	}
+
+	public String getpUsuario() {
+		return pUsuario;
+	}
+
+	public String getEstrangeiro() {
+		return estrangeiro;
+	}
+
+	public String getProfissionalSaude() {
+		return profissionalSaude;
+	}
+
+	public String getProfissionalSeguranca() {
+		return profissionalSeguranca;
+	}
+
+	public String getCbo() {
+		return cbo;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public String getCns() {
+		return cns;
+	}
+
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public String getNomeMae() {
+		return nomeMae;
+	}
+
+	public String getPaisOrigem() {
+		return paisOrigem;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public String getRacaCor() {
+		return racaCor;
+	}
+
+	public String getEtnia() {
+		return etnia;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public String getPassaporte() {
+		return passaporte;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public String getMunicipio() {
+		return municipio;
+	}
+
+	public String getTelefoneContato() {
+		return telefoneContato;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String getSintomas() {
+		return sintomas;
+	}
+
+	public String getOutrosSintomas() {
+		return outrosSintomas;
+	}
+
+	public String getCondicoes() {
+		return condicoes;
+	}
+
+	public String getEstadoTeste() {
+		return estadoTeste;
+	}
+
+	public String getTipoTeste() {
+		return tipoTeste;
+	}
+
+	public String getTesteSorologico() {
+		return testeSorologico;
+	}
+
+	public Date getDataTesteSorologico() {
+		return dataTesteSorologico;
+	}
+
+	public String getResultadoTeste() {
+		return resultadoTeste;
+	}
+
+	public String getTipoTesteSorologico() {
+		return tipoTesteSorologico;
+	}
+
+	public String getResultadoTesteSorologicoIgA() {
+		return resultadoTesteSorologicoIgA;
+	}
+
+	public String getResultadoTesteSorologicoIgG() {
+		return resultadoTesteSorologicoIgG;
+	}
+
+	public String getResultadoTesteSorologicoIgM() {
+		return resultadoTesteSorologicoIgM;
+	}
+
+	public String getResultadoTesteSorologicoTotais() {
+		return resultadoTesteSorologicoTotais;
+	}
+
+	public String getNumeroNotificacao() {
+		return numeroNotificacao;
+	}
+
+	public String getCnes() {
+		return cnes;
+	}
+
+	public String getEstadoNotificacao() {
+		return estadoNotificacao;
+	}
+
+	public String getMunicipioNotificacao() {
+		return municipioNotificacao;
+	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public String getNomeCompletoDesnormalizado() {
+		return nomeCompletoDesnormalizado;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public String getSourceId() {
+		return sourceId;
+	}
+
+	public String getIdade() {
+		return idade;
+	}
+
+	public String getClassificacaoFinal() {
+		return classificacaoFinal;
+	}
+
+	public String getEvolucaoCaso() {
+		return evolucaoCaso;
+	}
+
+	public Date getDataEncerramento() {
+		return dataEncerramento;
+	}
+
+	public String getDescricaoRacaCor() {
+		return descricaoRacaCor;
+	}
+
+	public String getpUsuarioAlteracao() {
+		return pUsuarioAlteracao;
+	}
+
+	public String getRpa() {
+		return rpa;
+	}
+
+	public String getIdOrigem() {
+		return idOrigem;
+	}
+
+	public String getDesnormalizarNome() {
+		return desnormalizarNome;
+	}
+
+	public String getTimestampNotificacao() {
+		return timestampNotificacao;
+	}
+
+	public String getEstadoIBGE() {
+		return estadoIBGE;
+	}
+
+	public String getEstadoNotificacaoIBGE() {
+		return estadoNotificacaoIBGE;
+	}
+
+	public String getMunicipioIBGE() {
+		return municipioIBGE;
+	}
+
+	public String getMunicipioNotificacaoIBGE() {
+		return municipioNotificacaoIBGE;
+	}
+
+	public String getNotificadorCpf() {
+		return notificadorCpf;
+	}
+
+	public String getNotificadorEmail() {
+		return notificadorEmail;
+	}
+
+	public String getNotificadorNome() {
+		return notificadorNome;
+	}
+
+	public String getNotificadorCNPJ() {
+		return notificadorCNPJ;
+	}
+
+	public String getCodigoClassificacaoFinal() {
+		return codigoClassificacaoFinal;
+	}
+
+	public String getCodigoEvolucaoCaso() {
+		return codigoEvolucaoCaso;
+	}
+
+	public String getCodigoEstadoTeste() {
+		return codigoEstadoTeste;
+	}
+
+	public String getLabCnes() {
+		return labCnes;
+	}
+
+	public String getCodigoCondicoes() {
+		return codigoCondicoes;
+	}
+
+	public String getCodigoResultadoTeste() {
+		return codigoResultadoTeste;
+	}
+
+	public String getCodigoSintomas() {
+		return codigoSintomas;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getComunidadeTradicional() {
+		return comunidadeTradicional;
+	}
+
+	public String getContemComunidadeTradicional() {
+		return contemComunidadeTradicional;
+	}
+
+	public String getVersaoFormulario() {
+		return versaoFormulario;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgM() {
+		return codigoResultadoTesteSorologicoIgM;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgG() {
+		return codigoResultadoTesteSorologicoIgG;
+	}
+
+	public String getCodigoTipoTesteSorologico() {
+		return codigoTipoTesteSorologico;
+	}
+
+	public String getCodigoTesteSorologico() {
+		return codigoTesteSorologico;
+	}
+
+	public String getCodigoTipoTeste() {
+		return codigoTipoTeste;
+	}
+
+	public String getCodigoProfissionalSeguranca() {
+		return codigoProfissionalSeguranca;
+	}
+
+	public String getCodigoProfissionalSaude() {
+		return codigoProfissionalSaude;
+	}
+
+	public String getCodigoTemCpf() {
+		return codigoTemCpf;
+	}
+
+	public String getCodigoSexo() {
+		return codigoSexo;
+	}
+
+	public String getCodigoEstrangeiro() {
+		return codigoEstrangeiro;
+	}
+
+	public String getCodigoCbo() {
+		return codigoCbo;
+	}
+
+	public String getCodigoPaisOrigem() {
+		return codigoPaisOrigem;
+	}
+
+	public String getCodigoResultadoTesteSorologicoTotais() {
+		return codigoResultadoTesteSorologicoTotais;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgA() {
+		return codigoResultadoTesteSorologicoIgA;
+	}
+
+	public String getCodigoComunidadeTradicional() {
+		return codigoComunidadeTradicional;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
 	@Override
 	public String toString() {
 		return "Notificacao [dataNascimento=" + dataNascimento + ", dataNotificacao=" + dataNotificacao
@@ -344,7 +720,7 @@ public class Notificacao {
 				+ ", updatedAt=" + updatedAt + ", sourceId=" + sourceId + ", idade=" + idade + ", classificacaoFinal="
 				+ classificacaoFinal + ", evolucaoCaso=" + evolucaoCaso + ", dataEncerramento=" + dataEncerramento
 				+ ", descricaoRacaCor=" + descricaoRacaCor + ", pUsuarioAlteracao=" + pUsuarioAlteracao + ", rpa=" + rpa
-				+ ", idOrigem=" + idOrigem + ", desnormalizarNome=" + desnormalizarNome + ", timestamp=" + timestamp
+				+ ", idOrigem=" + idOrigem + ", desnormalizarNome=" + desnormalizarNome + ", timestamp=" + timestampNotificacao
 				+ ", estadoIBGE=" + estadoIBGE + ", estadoNotificacaoIBGE=" + estadoNotificacaoIBGE + ", municipioIBGE="
 				+ municipioIBGE + ", municipioNotificacaoIBGE=" + municipioNotificacaoIBGE + ", notificadorCpf="
 				+ notificadorCpf + ", notificadorEmail=" + notificadorEmail + ", notificadorNome=" + notificadorNome

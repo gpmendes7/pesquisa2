@@ -4,7 +4,7 @@ begin
 	declare v_contador int default inicio;
     
     declare v_copias int default 0;
-
+    
     declare v_bairro text;
     declare v_cbo text;
     declare v_cep text;
@@ -119,7 +119,8 @@ begin
 			   resultadoTesteSorologicoIgM, resultadoTesteSorologicoTotais, rpa, sexo, sintomas, sourceId, 
                telefone, telefoneContato, testeSorologico, timestampNotificacao, tipoTeste, tipoTesteSorologico,
 			   updatedAt, versaoFormulario
-        from notificacao where id between inicio and fim
+        from notificacao 
+        where id between inicio and fim
     );
     
     open c_notificacoes;
@@ -152,7 +153,7 @@ begin
 		from paciente p
 		where p.nomeCompleto = v_nomeCompleto
 		and (p.cpf = v_cpf or p.dataNascimento = v_dataNascimento);
-        
+
         if v_contador <= fim and v_copias = 0  then
 			insert into paciente (bairro, cbo, cep, classificacaoFinal, cnes, cns, codigoCbo, codigoClassificacaoFinal,
 								  codigoComunidadeTradicional, codigoCondicoes, codigoEstadoTeste, codigoEstrangeiro,
@@ -192,7 +193,28 @@ begin
 				    v_resultadoTesteSorologicoIgM, v_resultadoTesteSorologicoTotais, v_rpa, v_sexo, v_sintomas, v_sourceId, 
 				    v_telefone, v_telefoneContato, v_testeSorologico, v_timestampNotificacao, v_tipoTeste, v_tipoTesteSorologico,
 				    v_updatedAt, v_versaoFormulario);
+                    
+            select p.id into v_paciente_id
+            from paciente p
+            where p.numeroNotificacao = v_numeroNotificacao
+            and p.nomeCompleto = v_nomeCompleto
+			and p.cpf = v_cpf
+            and p.dataNascimento = v_dataNascimento;
+            
+            update notificacao
+			set paciente_id = v_paciente_id
+			where nomeCompleto = v_nomeCompleto
+			and (cpf = v_cpf or dataNascimento = v_dataNascimento);
         end if;
+        
+        if v_copias > 0 then
+			update paciente
+				set resultadoTeste = v_resultadoTeste
+				where nomeCompleto = v_nomeCompleto
+				  and (cpf = v_cpf or dataNascimento = v_dataNascimento)
+				  and grau_resultado_teste(v_resultadoTeste) > grau_resultado_teste(resultadoTeste);
+		end if;
+        
         set v_contador = v_contador + 1;
     until v_contador > fim end repeat; 
     
@@ -204,70 +226,21 @@ delimiter ;
 drop procedure gerarPacientes;
 truncate paciente;
 select * from paciente;
-select id, numeroNotificacao, nomeCompleto, cpf, dataNascimento, resultadoTeste from paciente where id between 1 and 10;
-select id, numeroNotificacao, nomeCompleto, cpf, dataNascimento from notificacao limit 0, 10000;
-select id, numeroNotificacao, nomeCompleto, cpf, dataNascimento from notificacao where id between 1000000 and 1000100;
+select id, paciente_id, numeroNotificacao, nomeCompleto, cpf, dataNascimento from notificacao where id between 1 and 1000;
 
-select count(id) from paciente;
+call gerarPacientes(1, 1);
 
-select id, numeroNotificacao, nomeCompleto, dataNascimento
-from paciente 
-where nomeCompleto = 'ANA PAULA DE SOUZA MARTINS'
-and cpf = '079.215.877-63';
+ select * from notificacao
+ where paciente_id  = 12;
+ 
+ update notificacao
+ set paciente_id = 2
+ where numeroNotificacao = '432042958208';
+ 
+ update notificacao
+set paciente_id = null
+where  id between 1 and 100000;
 
-select id, paciente_id, numeroNotificacao, nomeCompleto, dataNascimento
-from notificacao 
-where nomeCompleto = 'ANA PAULA DE SOUZA MARTINS'
-and cpf = '079.215.877-63';
-
-select id, numeroNotificacao, nomeCompleto, dataNascimento
-from paciente 
-where id = 161623
-
-select id, numeroNotificacao, nomeCompleto, dataNascimento
-from paciente 
-where id = 161631
-
-select id, numeroNotificacao, nomeCompleto, dataNascimento
-from paciente 
-where id = 158846
-
-select id, numeroNotificacao, nomeCompleto, dataNascimento
-from paciente 
-where id = 159846
-
-select id, paciente_id, numeroNotificacao, nomeCompleto, dataNascimento
-from notificacao 
-where paciente_id = 161623
-
-delimiter $$
-create procedure gerarVariosPacientes(in inicio int, in fim int, in tam int)
-begin
-    declare v_lim1 int default inicio;
-    declare v_lim2 int default inicio + tam - 1;
-    
-    repeat 
-		call gerarPacientes(v_lim1, v_lim2);
-        set v_lim1 = v_lim1 + tam;
-        set v_lim2 = v_lim2 + tam;
-    until v_lim2 > fim end repeat; 
-end
-$$
-delimiter ;
-
-drop procedure gerarVariosPacientes;
-
-call gerarVariosPacientes(1, 1000, 100);
-call gerarVariosPacientes(1001, 2000, 100);
-call gerarVariosPacientes(2001, 3000, 100);
-call gerarPacientes(3001, 3100);
-call gerarPacientes(3101, 3200);
-call gerarPacientes(3201, 3300);
-
-
-delete from paciente;
-
-
-
-
-
+ update notificacao
+set paciente_id = null
+where  id between 100001 and 200000;
