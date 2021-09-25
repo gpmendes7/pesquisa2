@@ -112,7 +112,11 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 				Sus sus = iterator.next();
 				Notificacao notificacao = gerarNotificacao(sus);
 				
-				String chave = removeAcentos(notificacao.getNomeCompleto().trim()) + notificacao.getCpf().trim() + notificacao.getDataNascimento();
+				String nomeCompleto = removeAcentos(notificacao.getNomeCompleto().trim().toUpperCase());
+				String cpf = notificacao.getCpf().trim();
+				Date dataNascimento = notificacao.getDataNascimento();
+				
+				String chave = nomeCompleto + cpf + dataNascimento;
 				Long pacienteId = map.get(chave);
 				Paciente paciente = null;
 				
@@ -126,24 +130,11 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 					paciente = new Paciente();
 					paciente.setId(pacienteId);
 				}
-				
-				/*
-				List<Paciente> resultado = obterPacienteNotificacao(notificacao);
-				Paciente paciente = null;
-				
-				if(resultado.size() == 0) {
-					paciente = gerarPaciente(notificacao);
-					em.persist(paciente);
-				} else {
-					paciente = resultado.get(0);
-				}*/
-				
+
 				notificacao.setPaciente(paciente);
 				em.persist(notificacao);
 				totalNotificacoes++;
-				
-				System.out.println(totalNotificacoes);
-				
+						
 				if(totalNotificacoes % lote == 0) {
 					em.flush();
 					em.clear();
@@ -197,7 +188,7 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 				sus.getCodigoComunidadeTradicional());
 	}
 	
-	public static Paciente gerarPaciente(Notificacao notificacao) throws ParseException {
+	public static Paciente gerarPaciente(Notificacao notificacao) {
 		return new Paciente(notificacao.getDataNascimento(), notificacao.getDataNotificacao(), notificacao.getDataInicioSintomas(), notificacao.getDataTeste(), 
 				notificacao.getpUsuario(), notificacao.getEstrangeiro(), notificacao.getProfissionalSaude(), notificacao.getProfissionalSeguranca(), 
 				notificacao.getCbo(), notificacao.getCpf(), notificacao.getCns(), notificacao.getNomeCompleto(), 
@@ -223,21 +214,4 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 				notificacao.getCodigoCbo(), notificacao.getCodigoPaisOrigem(), notificacao.getCodigoResultadoTesteSorologicoTotais(), notificacao.getCodigoResultadoTesteSorologicoIgA(),
 				notificacao.getCodigoComunidadeTradicional());
 	}
-	
-
-	
-	private static List<Paciente> obterPacienteNotificacao(Notificacao notificacao) {
-		String jpql = "\n from Paciente p" 
-	                + "\n where p.nomeCompleto = ?1"
-				    + "\n and ( p.cpf = ?2 or p.dataNascimento = ?3)";
-		TypedQuery<Paciente> query = em.createQuery(jpql, Paciente.class)
-									   .setFirstResult(0)
-									   .setMaxResults(1);
-		query.setParameter(1, removeAcentos(notificacao.getNomeCompleto().trim()));
-		query.setParameter(2, notificacao.getCpf().trim());
-		query.setParameter(3, notificacao.getDataNascimento());
-		return query.getResultList();
-	}
-	
-	
 }
