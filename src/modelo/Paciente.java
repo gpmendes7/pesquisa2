@@ -7,8 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -201,6 +199,16 @@ public class Paciente {
 	public Paciente() {
 		notificacoes = new ArrayList<>();
 	}
+	
+
+	public Paciente(Date dataNascimento, String cpf, String nomeCompleto, String municipioNotificacao) {
+		super();
+		this.dataNascimento = dataNascimento;
+		this.cpf = cpf;
+		this.nomeCompleto = nomeCompleto;
+		this.municipioNotificacao = municipioNotificacao;
+	}
+
 
 	public Paciente(Date dataNascimento, Date dataNotificacao, Date dataInicioSintomas, Date dataTeste, String pUsuario,
 			String estrangeiro, String profissionalSaude, String profissionalSeguranca, String cbo, String cpf,
@@ -341,18 +349,745 @@ public class Paciente {
 		return dataNascimento;
 	}
 	
+	public void setResultadoTeste(String resultadoTeste) {
+		this.resultadoTeste = resultadoTeste;
+	}
+	
+	public String getResultadoTeste() {
+		return resultadoTeste;
+	}
+	
 	public List<Notificacao> getNotificacoes() {
 		return notificacoes;
 	}
 	
-	public boolean ehCopia(Paciente p) {
-		boolean temMesmoNomeCompleto = this.getNomeCompleto() != null && this.getNomeCompleto().equals(p.getNomeCompleto());
-		boolean temMesmoCpf = this.getCpf() != null && this.getCpf().equals(p.getCpf());
-		boolean temMesmaDataNascimento = this.getDataNascimento() != null && this.getDataNascimento().equals(p.getDataNascimento());
-		boolean temMesmoId = this.getId() != null && this.getId().equals(p.getId());
-		return  temMesmoNomeCompleto && (temMesmoCpf || temMesmaDataNascimento) && !temMesmoId;
+	public Date getDataNotificacao() {
+		return dataNotificacao;
 	}
-	
+
+	public void setDataNotificacao(Date dataNotificacao) {
+		this.dataNotificacao = dataNotificacao;
+	}
+
+	public Date getDataInicioSintomas() {
+		return dataInicioSintomas;
+	}
+
+	public void setDataInicioSintomas(Date dataInicioSintomas) {
+		this.dataInicioSintomas = dataInicioSintomas;
+	}
+
+	public Date getDataTeste() {
+		return dataTeste;
+	}
+
+	public void setDataTeste(Date dataTeste) {
+		this.dataTeste = dataTeste;
+	}
+
+	public String getpUsuario() {
+		return pUsuario;
+	}
+
+	public void setpUsuario(String pUsuario) {
+		this.pUsuario = pUsuario;
+	}
+
+	public String getEstrangeiro() {
+		return estrangeiro;
+	}
+
+	public void setEstrangeiro(String estrangeiro) {
+		this.estrangeiro = estrangeiro;
+	}
+
+	public String getProfissionalSaude() {
+		return profissionalSaude;
+	}
+
+	public void setProfissionalSaude(String profissionalSaude) {
+		this.profissionalSaude = profissionalSaude;
+	}
+
+	public String getProfissionalSeguranca() {
+		return profissionalSeguranca;
+	}
+
+	public void setProfissionalSeguranca(String profissionalSeguranca) {
+		this.profissionalSeguranca = profissionalSeguranca;
+	}
+
+	public String getCbo() {
+		return cbo;
+	}
+
+	public void setCbo(String cbo) {
+		this.cbo = cbo;
+	}
+
+	public String getCns() {
+		return cns;
+	}
+
+	public void setCns(String cns) {
+		this.cns = cns;
+	}
+
+	public String getNomeMae() {
+		return nomeMae;
+	}
+
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
+
+	public String getPaisOrigem() {
+		return paisOrigem;
+	}
+
+	public void setPaisOrigem(String paisOrigem) {
+		this.paisOrigem = paisOrigem;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getRacaCor() {
+		return racaCor;
+	}
+
+	public void setRacaCor(String racaCor) {
+		this.racaCor = racaCor;
+	}
+
+	public String getEtnia() {
+		return etnia;
+	}
+
+	public void setEtnia(String etnia) {
+		this.etnia = etnia;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getPassaporte() {
+		return passaporte;
+	}
+
+	public void setPassaporte(String passaporte) {
+		this.passaporte = passaporte;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
+
+	public String getTelefoneContato() {
+		return telefoneContato;
+	}
+
+	public void setTelefoneContato(String telefoneContato) {
+		this.telefoneContato = telefoneContato;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getSintomas() {
+		return sintomas;
+	}
+
+	public void setSintomas(String sintomas) {
+		this.sintomas = sintomas;
+	}
+
+	public String getOutrosSintomas() {
+		return outrosSintomas;
+	}
+
+	public void setOutrosSintomas(String outrosSintomas) {
+		this.outrosSintomas = outrosSintomas;
+	}
+
+	public String getCondicoes() {
+		return condicoes;
+	}
+
+	public void setCondicoes(String condicoes) {
+		this.condicoes = condicoes;
+	}
+
+	public String getEstadoTeste() {
+		return estadoTeste;
+	}
+
+	public void setEstadoTeste(String estadoTeste) {
+		this.estadoTeste = estadoTeste;
+	}
+
+	public String getTipoTeste() {
+		return tipoTeste;
+	}
+
+	public void setTipoTeste(String tipoTeste) {
+		this.tipoTeste = tipoTeste;
+	}
+
+	public String getTesteSorologico() {
+		return testeSorologico;
+	}
+
+	public void setTesteSorologico(String testeSorologico) {
+		this.testeSorologico = testeSorologico;
+	}
+
+	public Date getDataTesteSorologico() {
+		return dataTesteSorologico;
+	}
+
+	public void setDataTesteSorologico(Date dataTesteSorologico) {
+		this.dataTesteSorologico = dataTesteSorologico;
+	}
+
+	public String getTipoTesteSorologico() {
+		return tipoTesteSorologico;
+	}
+
+	public void setTipoTesteSorologico(String tipoTesteSorologico) {
+		this.tipoTesteSorologico = tipoTesteSorologico;
+	}
+
+	public String getResultadoTesteSorologicoIgA() {
+		return resultadoTesteSorologicoIgA;
+	}
+
+	public void setResultadoTesteSorologicoIgA(String resultadoTesteSorologicoIgA) {
+		this.resultadoTesteSorologicoIgA = resultadoTesteSorologicoIgA;
+	}
+
+	public String getResultadoTesteSorologicoIgG() {
+		return resultadoTesteSorologicoIgG;
+	}
+
+	public void setResultadoTesteSorologicoIgG(String resultadoTesteSorologicoIgG) {
+		this.resultadoTesteSorologicoIgG = resultadoTesteSorologicoIgG;
+	}
+
+	public String getResultadoTesteSorologicoIgM() {
+		return resultadoTesteSorologicoIgM;
+	}
+
+	public void setResultadoTesteSorologicoIgM(String resultadoTesteSorologicoIgM) {
+		this.resultadoTesteSorologicoIgM = resultadoTesteSorologicoIgM;
+	}
+
+	public String getResultadoTesteSorologicoTotais() {
+		return resultadoTesteSorologicoTotais;
+	}
+
+	public void setResultadoTesteSorologicoTotais(String resultadoTesteSorologicoTotais) {
+		this.resultadoTesteSorologicoTotais = resultadoTesteSorologicoTotais;
+	}
+
+	public String getNumeroNotificacao() {
+		return numeroNotificacao;
+	}
+
+	public void setNumeroNotificacao(String numeroNotificacao) {
+		this.numeroNotificacao = numeroNotificacao;
+	}
+
+	public String getCnes() {
+		return cnes;
+	}
+
+	public void setCnes(String cnes) {
+		this.cnes = cnes;
+	}
+
+	public String getEstadoNotificacao() {
+		return estadoNotificacao;
+	}
+
+	public void setEstadoNotificacao(String estadoNotificacao) {
+		this.estadoNotificacao = estadoNotificacao;
+	}
+
+	public String getMunicipioNotificacao() {
+		return municipioNotificacao;
+	}
+
+	public void setMunicipioNotificacao(String municipioNotificacao) {
+		this.municipioNotificacao = municipioNotificacao;
+	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
+
+	public String getNomeCompletoDesnormalizado() {
+		return nomeCompletoDesnormalizado;
+	}
+
+	public void setNomeCompletoDesnormalizado(String nomeCompletoDesnormalizado) {
+		this.nomeCompletoDesnormalizado = nomeCompletoDesnormalizado;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getSourceId() {
+		return sourceId;
+	}
+
+	public void setSourceId(String sourceId) {
+		this.sourceId = sourceId;
+	}
+
+	public String getIdade() {
+		return idade;
+	}
+
+	public void setIdade(String idade) {
+		this.idade = idade;
+	}
+
+	public String getClassificacaoFinal() {
+		return classificacaoFinal;
+	}
+
+	public void setClassificacaoFinal(String classificacaoFinal) {
+		this.classificacaoFinal = classificacaoFinal;
+	}
+
+	public String getEvolucaoCaso() {
+		return evolucaoCaso;
+	}
+
+	public void setEvolucaoCaso(String evolucaoCaso) {
+		this.evolucaoCaso = evolucaoCaso;
+	}
+
+	public Date getDataEncerramento() {
+		return dataEncerramento;
+	}
+
+	public void setDataEncerramento(Date dataEncerramento) {
+		this.dataEncerramento = dataEncerramento;
+	}
+
+	public String getDescricaoRacaCor() {
+		return descricaoRacaCor;
+	}
+
+	public void setDescricaoRacaCor(String descricaoRacaCor) {
+		this.descricaoRacaCor = descricaoRacaCor;
+	}
+
+	public String getpUsuarioAlteracao() {
+		return pUsuarioAlteracao;
+	}
+
+	public void setpUsuarioAlteracao(String pUsuarioAlteracao) {
+		this.pUsuarioAlteracao = pUsuarioAlteracao;
+	}
+
+	public String getRpa() {
+		return rpa;
+	}
+
+	public void setRpa(String rpa) {
+		this.rpa = rpa;
+	}
+
+	public String getIdOrigem() {
+		return idOrigem;
+	}
+
+	public void setIdOrigem(String idOrigem) {
+		this.idOrigem = idOrigem;
+	}
+
+	public String getDesnormalizarNome() {
+		return desnormalizarNome;
+	}
+
+	public void setDesnormalizarNome(String desnormalizarNome) {
+		this.desnormalizarNome = desnormalizarNome;
+	}
+
+	public String getTimestampNotificacao() {
+		return timestampNotificacao;
+	}
+
+	public void setTimestampNotificacao(String timestampNotificacao) {
+		this.timestampNotificacao = timestampNotificacao;
+	}
+
+	public String getEstadoIBGE() {
+		return estadoIBGE;
+	}
+
+	public void setEstadoIBGE(String estadoIBGE) {
+		this.estadoIBGE = estadoIBGE;
+	}
+
+	public String getEstadoNotificacaoIBGE() {
+		return estadoNotificacaoIBGE;
+	}
+
+	public void setEstadoNotificacaoIBGE(String estadoNotificacaoIBGE) {
+		this.estadoNotificacaoIBGE = estadoNotificacaoIBGE;
+	}
+
+	public String getMunicipioIBGE() {
+		return municipioIBGE;
+	}
+
+	public void setMunicipioIBGE(String municipioIBGE) {
+		this.municipioIBGE = municipioIBGE;
+	}
+
+	public String getMunicipioNotificacaoIBGE() {
+		return municipioNotificacaoIBGE;
+	}
+
+	public void setMunicipioNotificacaoIBGE(String municipioNotificacaoIBGE) {
+		this.municipioNotificacaoIBGE = municipioNotificacaoIBGE;
+	}
+
+	public String getNotificadorCpf() {
+		return notificadorCpf;
+	}
+
+	public void setNotificadorCpf(String notificadorCpf) {
+		this.notificadorCpf = notificadorCpf;
+	}
+
+	public String getNotificadorEmail() {
+		return notificadorEmail;
+	}
+
+	public void setNotificadorEmail(String notificadorEmail) {
+		this.notificadorEmail = notificadorEmail;
+	}
+
+	public String getNotificadorNome() {
+		return notificadorNome;
+	}
+
+	public void setNotificadorNome(String notificadorNome) {
+		this.notificadorNome = notificadorNome;
+	}
+
+	public String getNotificadorCNPJ() {
+		return notificadorCNPJ;
+	}
+
+	public void setNotificadorCNPJ(String notificadorCNPJ) {
+		this.notificadorCNPJ = notificadorCNPJ;
+	}
+
+	public String getCodigoClassificacaoFinal() {
+		return codigoClassificacaoFinal;
+	}
+
+	public void setCodigoClassificacaoFinal(String codigoClassificacaoFinal) {
+		this.codigoClassificacaoFinal = codigoClassificacaoFinal;
+	}
+
+	public String getCodigoEvolucaoCaso() {
+		return codigoEvolucaoCaso;
+	}
+
+	public void setCodigoEvolucaoCaso(String codigoEvolucaoCaso) {
+		this.codigoEvolucaoCaso = codigoEvolucaoCaso;
+	}
+
+	public String getCodigoEstadoTeste() {
+		return codigoEstadoTeste;
+	}
+
+	public void setCodigoEstadoTeste(String codigoEstadoTeste) {
+		this.codigoEstadoTeste = codigoEstadoTeste;
+	}
+
+	public String getLabCnes() {
+		return labCnes;
+	}
+
+	public void setLabCnes(String labCnes) {
+		this.labCnes = labCnes;
+	}
+
+	public String getCodigoCondicoes() {
+		return codigoCondicoes;
+	}
+
+	public void setCodigoCondicoes(String codigoCondicoes) {
+		this.codigoCondicoes = codigoCondicoes;
+	}
+
+	public String getCodigoResultadoTeste() {
+		return codigoResultadoTeste;
+	}
+
+	public void setCodigoResultadoTeste(String codigoResultadoTeste) {
+		this.codigoResultadoTeste = codigoResultadoTeste;
+	}
+
+	public String getCodigoSintomas() {
+		return codigoSintomas;
+	}
+
+	public void setCodigoSintomas(String codigoSintomas) {
+		this.codigoSintomas = codigoSintomas;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getComunidadeTradicional() {
+		return comunidadeTradicional;
+	}
+
+	public void setComunidadeTradicional(String comunidadeTradicional) {
+		this.comunidadeTradicional = comunidadeTradicional;
+	}
+
+	public String getContemComunidadeTradicional() {
+		return contemComunidadeTradicional;
+	}
+
+	public void setContemComunidadeTradicional(String contemComunidadeTradicional) {
+		this.contemComunidadeTradicional = contemComunidadeTradicional;
+	}
+
+	public String getVersaoFormulario() {
+		return versaoFormulario;
+	}
+
+	public void setVersaoFormulario(String versaoFormulario) {
+		this.versaoFormulario = versaoFormulario;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgM() {
+		return codigoResultadoTesteSorologicoIgM;
+	}
+
+	public void setCodigoResultadoTesteSorologicoIgM(String codigoResultadoTesteSorologicoIgM) {
+		this.codigoResultadoTesteSorologicoIgM = codigoResultadoTesteSorologicoIgM;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgG() {
+		return codigoResultadoTesteSorologicoIgG;
+	}
+
+	public void setCodigoResultadoTesteSorologicoIgG(String codigoResultadoTesteSorologicoIgG) {
+		this.codigoResultadoTesteSorologicoIgG = codigoResultadoTesteSorologicoIgG;
+	}
+
+	public String getCodigoTipoTesteSorologico() {
+		return codigoTipoTesteSorologico;
+	}
+
+	public void setCodigoTipoTesteSorologico(String codigoTipoTesteSorologico) {
+		this.codigoTipoTesteSorologico = codigoTipoTesteSorologico;
+	}
+
+	public String getCodigoTesteSorologico() {
+		return codigoTesteSorologico;
+	}
+
+	public void setCodigoTesteSorologico(String codigoTesteSorologico) {
+		this.codigoTesteSorologico = codigoTesteSorologico;
+	}
+
+	public String getCodigoTipoTeste() {
+		return codigoTipoTeste;
+	}
+
+	public void setCodigoTipoTeste(String codigoTipoTeste) {
+		this.codigoTipoTeste = codigoTipoTeste;
+	}
+
+	public String getCodigoProfissionalSeguranca() {
+		return codigoProfissionalSeguranca;
+	}
+
+	public void setCodigoProfissionalSeguranca(String codigoProfissionalSeguranca) {
+		this.codigoProfissionalSeguranca = codigoProfissionalSeguranca;
+	}
+
+	public String getCodigoProfissionalSaude() {
+		return codigoProfissionalSaude;
+	}
+
+	public void setCodigoProfissionalSaude(String codigoProfissionalSaude) {
+		this.codigoProfissionalSaude = codigoProfissionalSaude;
+	}
+
+	public String getCodigoTemCpf() {
+		return codigoTemCpf;
+	}
+
+	public void setCodigoTemCpf(String codigoTemCpf) {
+		this.codigoTemCpf = codigoTemCpf;
+	}
+
+	public String getCodigoSexo() {
+		return codigoSexo;
+	}
+
+	public void setCodigoSexo(String codigoSexo) {
+		this.codigoSexo = codigoSexo;
+	}
+
+	public String getCodigoEstrangeiro() {
+		return codigoEstrangeiro;
+	}
+
+	public void setCodigoEstrangeiro(String codigoEstrangeiro) {
+		this.codigoEstrangeiro = codigoEstrangeiro;
+	}
+
+	public String getCodigoCbo() {
+		return codigoCbo;
+	}
+
+	public void setCodigoCbo(String codigoCbo) {
+		this.codigoCbo = codigoCbo;
+	}
+
+	public String getCodigoPaisOrigem() {
+		return codigoPaisOrigem;
+	}
+
+	public void setCodigoPaisOrigem(String codigoPaisOrigem) {
+		this.codigoPaisOrigem = codigoPaisOrigem;
+	}
+
+	public String getCodigoResultadoTesteSorologicoTotais() {
+		return codigoResultadoTesteSorologicoTotais;
+	}
+
+	public void setCodigoResultadoTesteSorologicoTotais(String codigoResultadoTesteSorologicoTotais) {
+		this.codigoResultadoTesteSorologicoTotais = codigoResultadoTesteSorologicoTotais;
+	}
+
+	public String getCodigoResultadoTesteSorologicoIgA() {
+		return codigoResultadoTesteSorologicoIgA;
+	}
+
+	public void setCodigoResultadoTesteSorologicoIgA(String codigoResultadoTesteSorologicoIgA) {
+		this.codigoResultadoTesteSorologicoIgA = codigoResultadoTesteSorologicoIgA;
+	}
+
+	public String getCodigoComunidadeTradicional() {
+		return codigoComunidadeTradicional;
+	}
+
+	public void setCodigoComunidadeTradicional(String codigoComunidadeTradicional) {
+		this.codigoComunidadeTradicional = codigoComunidadeTradicional;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public void setNotificacoes(List<Notificacao> notificacoes) {
+		this.notificacoes = notificacoes;
+	}
 
 	@Override
 	public String toString() {

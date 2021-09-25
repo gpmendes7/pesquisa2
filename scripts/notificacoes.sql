@@ -51,3 +51,4 @@ where nomeCompleto = 'MARCIO DORIA DE SIQUEIRA';
 select id, numeroNotificacao, nomeCompleto, cpf, dataNascimento, resultadoTeste, paciente_id
 from notificacao 
 where nomeCompleto = 'ABRAÃO BENICIO DE OLIVEIRA';
+
