@@ -6,16 +6,20 @@ public class PacienteCSV {
 	private String nomeCompleto;
 	private String dataNascimento;
 	private String municipioNotificacao;
+	private String racaCor;
 	
 	public PacienteCSV() {
 	
 	}
 
-	public PacienteCSV(String cpf, String nomeCompleto, String dataNascimento, String municipioNotificacao) {
+	public PacienteCSV(String cpf, String nomeCompleto, 
+			           String dataNascimento, String municipioNotificacao, 
+			           String racaCor) {
 		this.cpf = cpf;
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.municipioNotificacao = municipioNotificacao;
+		this.racaCor = racaCor;
 	}
 
 
@@ -56,5 +60,13 @@ public class PacienteCSV {
 
 	public void setMunicipioNotificacao(String municipioNotificacao) {
 		this.municipioNotificacao = municipioNotificacao;
+	}
+
+	public String getRacaCor() {
+		return racaCor;
+	}
+
+	public void setRacaCor(String racaCor) {
+		this.racaCor = racaCor;
 	}
 }

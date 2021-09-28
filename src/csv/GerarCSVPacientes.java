@@ -31,7 +31,7 @@ public class GerarCSVPacientes {
 		strategy = new ColumnPositionMappingStrategy<PacienteCSV>();
 		strategy.setType(PacienteCSV.class);
 
-		String[] colunas = { "cpf", "nomeCompleto", "dataNascimento", "municipioNotificacao"};
+		String[] colunas = { "cpf", "nomeCompleto", "dataNascimento", "municipioNotificacao", "racaCor"};
  
 		strategy.setColumnMapping(colunas);
 	}
@@ -43,7 +43,7 @@ public class GerarCSVPacientes {
 		List<Paciente> pacientes = new ArrayList<Paciente>();
 		
 		List<PacienteCSV> pacientesCSV = new ArrayList<PacienteCSV>();
-		pacientesCSV.add(new PacienteCSV("cpf", "nomeCompleto", "dataNascimento", "municipioNotificacao"));
+		pacientesCSV.add(new PacienteCSV("cpf", "nomeCompleto", "dataNascimento", "municipioNotificacao", "racaCor"));
 		
 		int offset = 0;
 		  
@@ -55,7 +55,8 @@ public class GerarCSVPacientes {
 			  String nomeCompleto = paciente.getNomeCompleto();
 			  String dataNascimento = paciente.getDataNascimento() != null ? paciente.getDataNascimento().toString() : "";
 			  String municipioNotificacao = paciente.getMunicipioNotificacao();
-			  pacientesCSV.add(new PacienteCSV(cpf, nomeCompleto, dataNascimento, municipioNotificacao));
+			  String racaCor = paciente.getRacaCor();
+			  pacientesCSV.add(new PacienteCSV(cpf, nomeCompleto, dataNascimento, municipioNotificacao, racaCor));
 		  }
 		  
 		  em.flush();
