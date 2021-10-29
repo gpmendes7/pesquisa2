@@ -110,7 +110,7 @@ private static ColumnPositionMappingStrategy<SusCSV> strategy = new ColumnPositi
 				SusCSV susCSV = iterator.next();
 				Notificacao notificacao = gerarNotificacao(susCSV);
 				
-				String nomeCompleto = removeAcentos(notificacao.getNomeCompleto().trim().toUpperCase());
+				String nomeCompleto = removeAcentos(notificacao.getNomeCompleto().toUpperCase());
 				String cpf = notificacao.getCpf().trim();
 				Date dataNascimento = notificacao.getDataNascimento();
 				

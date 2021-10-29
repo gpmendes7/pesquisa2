@@ -104,134 +104,12 @@ public class SusCSV {
 	private String codigoResultadoTesteSorologicoIgA;
 	private String codigoComunidadeTradicional;
 	
-	public SusCSV() {
-	}
-
-	public SusCSV(String dataNascimento, String dataNotificacao, String dataInicioSintomas, String dataTeste,
-			String pUsuario, String estrangeiro, String profissionalSaude, String profissionalSeguranca, String cbo,
-			String cpf, String cns, String nomeCompleto, String nomeMae, String paisOrigem, String sexo, String racaCor,
-			String etnia, String cep, String passaporte, String logradouro, String numero, String complemento,
-			String bairro, String estado, String municipio, String telefoneContato, String telefone, String sintomas,
-			String outrosSintomas, String condicoes, String estadoTeste, String tipoTeste, String testeSorologico,
-			String dataTesteSorologico, String resultadoTeste, String tipoTesteSorologico,
-			String resultadoTesteSorologicoIgA, String resultadoTesteSorologicoIgG, String resultadoTesteSorologicoIgM,
-			String resultadoTesteSorologicoTotais, String numeroNotificacao, String cnes, String estadoNotificacao,
-			String municipioNotificacao, String origem, String nomeCompletoDesnormalizado, String createdAt,
-			String updatedAt, String sourceId, String idade, String classificacaoFinal, String evolucaoCaso,
-			String dataEncerramento, String descricaoRacaCor, String pUsuarioAlteracao, String rpa, String idOrigem,
-			String desnormalizarNome, String timestamp, String estadoIBGE, String estadoNotificacaoIBGE,
-			String municipioIBGE, String municipioNotificacaoIBGE, String notificadorCpf, String notificadorEmail,
-			String notificadorNome, String notificadorCNPJ, String codigoClassificacaoFinal, String codigoEvolucaoCaso,
-			String codigoEstadoTeste, String labCnes, String codigoCondicoes, String codigoResultadoTeste,
-			String codigoSintomas, String email, String comunidadeTradicional, String contemComunidadeTradicional,
-			String versaoFormulario, String codigoResultadoTesteSorologicoIgM, String codigoResultadoTesteSorologicoIgG,
-			String codigoTipoTesteSorologico, String codigoTesteSorologico, String codigoTipoTeste,
-			String codigoProfissionalSeguranca, String codigoProfissionalSaude, String codigoTemCpf, String codigoSexo,
-			String codigoEstrangeiro, String codigoCbo, String codigoPaisOrigem,
-			String codigoResultadoTesteSorologicoTotais, String codigoResultadoTesteSorologicoIgA,
-			String codigoComunidadeTradicional) {
-		super();
-		this.dataNascimento = dataNascimento;
-		this.dataNotificacao = dataNotificacao;
-		this.dataInicioSintomas = dataInicioSintomas;
-		this.dataTeste = dataTeste;
-		this.pUsuario = pUsuario;
-		this.estrangeiro = estrangeiro;
-		this.profissionalSaude = profissionalSaude;
-		this.profissionalSeguranca = profissionalSeguranca;
-		this.cbo = cbo;
-		this.cpf = cpf;
-		this.cns = cns;
-		this.nomeCompleto = nomeCompleto;
-		this.nomeMae = nomeMae;
-		this.paisOrigem = paisOrigem;
-		this.sexo = sexo;
-		this.racaCor = racaCor;
-		this.etnia = etnia;
-		this.cep = cep;
-		this.passaporte = passaporte;
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.estado = estado;
-		this.municipio = municipio;
-		this.telefoneContato = telefoneContato;
-		this.telefone = telefone;
-		this.sintomas = sintomas;
-		this.outrosSintomas = outrosSintomas;
-		this.condicoes = condicoes;
-		this.estadoTeste = estadoTeste;
-		this.tipoTeste = tipoTeste;
-		this.testeSorologico = testeSorologico;
-		this.dataTesteSorologico = dataTesteSorologico;
-		this.resultadoTeste = resultadoTeste;
-		this.tipoTesteSorologico = tipoTesteSorologico;
-		this.resultadoTesteSorologicoIgA = resultadoTesteSorologicoIgA;
-		this.resultadoTesteSorologicoIgG = resultadoTesteSorologicoIgG;
-		this.resultadoTesteSorologicoIgM = resultadoTesteSorologicoIgM;
-		this.resultadoTesteSorologicoTotais = resultadoTesteSorologicoTotais;
-		this.numeroNotificacao = numeroNotificacao;
-		this.cnes = cnes;
-		this.estadoNotificacao = estadoNotificacao;
-		this.municipioNotificacao = municipioNotificacao;
-		this.origem = origem;
-		this.nomeCompletoDesnormalizado = nomeCompletoDesnormalizado;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.sourceId = sourceId;
-		this.idade = idade;
-		this.classificacaoFinal = classificacaoFinal;
-		this.evolucaoCaso = evolucaoCaso;
-		this.dataEncerramento = dataEncerramento;
-		this.descricaoRacaCor = descricaoRacaCor;
-		this.pUsuarioAlteracao = pUsuarioAlteracao;
-		this.rpa = rpa;
-		this.idOrigem = idOrigem;
-		this.desnormalizarNome = desnormalizarNome;
-		this.timestamp = timestamp;
-		this.estadoIBGE = estadoIBGE;
-		this.estadoNotificacaoIBGE = estadoNotificacaoIBGE;
-		this.municipioIBGE = municipioIBGE;
-		this.municipioNotificacaoIBGE = municipioNotificacaoIBGE;
-		this.notificadorCpf = notificadorCpf;
-		this.notificadorEmail = notificadorEmail;
-		this.notificadorNome = notificadorNome;
-		this.notificadorCNPJ = notificadorCNPJ;
-		this.codigoClassificacaoFinal = codigoClassificacaoFinal;
-		this.codigoEvolucaoCaso = codigoEvolucaoCaso;
-		this.codigoEstadoTeste = codigoEstadoTeste;
-		this.labCnes = labCnes;
-		this.codigoCondicoes = codigoCondicoes;
-		this.codigoResultadoTeste = codigoResultadoTeste;
-		this.codigoSintomas = codigoSintomas;
-		this.email = email;
-		this.comunidadeTradicional = comunidadeTradicional;
-		this.contemComunidadeTradicional = contemComunidadeTradicional;
-		this.versaoFormulario = versaoFormulario;
-		this.codigoResultadoTesteSorologicoIgM = codigoResultadoTesteSorologicoIgM;
-		this.codigoResultadoTesteSorologicoIgG = codigoResultadoTesteSorologicoIgG;
-		this.codigoTipoTesteSorologico = codigoTipoTesteSorologico;
-		this.codigoTesteSorologico = codigoTesteSorologico;
-		this.codigoTipoTeste = codigoTipoTeste;
-		this.codigoProfissionalSeguranca = codigoProfissionalSeguranca;
-		this.codigoProfissionalSaude = codigoProfissionalSaude;
-		this.codigoTemCpf = codigoTemCpf;
-		this.codigoSexo = codigoSexo;
-		this.codigoEstrangeiro = codigoEstrangeiro;
-		this.codigoCbo = codigoCbo;
-		this.codigoPaisOrigem = codigoPaisOrigem;
-		this.codigoResultadoTesteSorologicoTotais = codigoResultadoTesteSorologicoTotais;
-		this.codigoResultadoTesteSorologicoIgA = codigoResultadoTesteSorologicoIgA;
-		this.codigoComunidadeTradicional = codigoComunidadeTradicional;
-	}
-
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
 	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
+		this.dataNascimento = dataNascimento.trim();
 	}
 
 	public String getDataNotificacao() {
@@ -239,7 +117,7 @@ public class SusCSV {
 	}
 
 	public void setDataNotificacao(String dataNotificacao) {
-		this.dataNotificacao = dataNotificacao;
+		this.dataNotificacao = dataNotificacao.trim();
 	}
 
 	public String getDataInicioSintomas() {
@@ -247,7 +125,7 @@ public class SusCSV {
 	}
 
 	public void setDataInicioSintomas(String dataInicioSintomas) {
-		this.dataInicioSintomas = dataInicioSintomas;
+		this.dataInicioSintomas = dataInicioSintomas.trim();
 	}
 
 	public String getDataTeste() {
@@ -255,7 +133,7 @@ public class SusCSV {
 	}
 
 	public void setDataTeste(String dataTeste) {
-		this.dataTeste = dataTeste;
+		this.dataTeste = dataTeste.trim();
 	}
 
 	public String getpUsuario() {
@@ -263,7 +141,7 @@ public class SusCSV {
 	}
 
 	public void setpUsuario(String pUsuario) {
-		this.pUsuario = pUsuario;
+		this.pUsuario = pUsuario.trim();
 	}
 
 	public String getEstrangeiro() {
@@ -271,7 +149,7 @@ public class SusCSV {
 	}
 
 	public void setEstrangeiro(String estrangeiro) {
-		this.estrangeiro = estrangeiro;
+		this.estrangeiro = estrangeiro.trim();
 	}
 
 	public String getProfissionalSaude() {
@@ -279,7 +157,7 @@ public class SusCSV {
 	}
 
 	public void setProfissionalSaude(String profissionalSaude) {
-		this.profissionalSaude = profissionalSaude;
+		this.profissionalSaude = profissionalSaude.trim();
 	}
 
 	public String getProfissionalSeguranca() {
@@ -287,7 +165,7 @@ public class SusCSV {
 	}
 
 	public void setProfissionalSeguranca(String profissionalSeguranca) {
-		this.profissionalSeguranca = profissionalSeguranca;
+		this.profissionalSeguranca = profissionalSeguranca.trim();
 	}
 
 	public String getCbo() {
@@ -295,7 +173,7 @@ public class SusCSV {
 	}
 
 	public void setCbo(String cbo) {
-		this.cbo = cbo;
+		this.cbo = cbo.trim();
 	}
 
 	public String getCpf() {
@@ -303,7 +181,7 @@ public class SusCSV {
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf = cpf.trim();
 	}
 
 	public String getCns() {
@@ -311,7 +189,7 @@ public class SusCSV {
 	}
 
 	public void setCns(String cns) {
-		this.cns = cns;
+		this.cns = cns.trim();
 	}
 
 	public String getNomeCompleto() {
@@ -319,7 +197,7 @@ public class SusCSV {
 	}
 
 	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+		this.nomeCompleto = nomeCompleto.trim();
 	}
 
 	public String getNomeMae() {
@@ -327,7 +205,7 @@ public class SusCSV {
 	}
 
 	public void setNomeMae(String nomeMae) {
-		this.nomeMae = nomeMae;
+		this.nomeMae = nomeMae.trim();
 	}
 
 	public String getPaisOrigem() {
@@ -335,7 +213,7 @@ public class SusCSV {
 	}
 
 	public void setPaisOrigem(String paisOrigem) {
-		this.paisOrigem = paisOrigem;
+		this.paisOrigem = paisOrigem.trim();
 	}
 
 	public String getSexo() {
@@ -343,7 +221,7 @@ public class SusCSV {
 	}
 
 	public void setSexo(String sexo) {
-		this.sexo = sexo;
+		this.sexo = sexo.trim();
 	}
 
 	public String getRacaCor() {
@@ -351,7 +229,7 @@ public class SusCSV {
 	}
 
 	public void setRacaCor(String racaCor) {
-		this.racaCor = racaCor;
+		this.racaCor = racaCor.trim();
 	}
 
 	public String getEtnia() {
@@ -359,7 +237,7 @@ public class SusCSV {
 	}
 
 	public void setEtnia(String etnia) {
-		this.etnia = etnia;
+		this.etnia = etnia.trim();
 	}
 
 	public String getCep() {
@@ -367,7 +245,7 @@ public class SusCSV {
 	}
 
 	public void setCep(String cep) {
-		this.cep = cep;
+		this.cep = cep.trim();
 	}
 
 	public String getPassaporte() {
@@ -375,7 +253,7 @@ public class SusCSV {
 	}
 
 	public void setPassaporte(String passaporte) {
-		this.passaporte = passaporte;
+		this.passaporte = passaporte.trim();
 	}
 
 	public String getLogradouro() {
@@ -383,7 +261,7 @@ public class SusCSV {
 	}
 
 	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+		this.logradouro = logradouro.trim();
 	}
 
 	public String getNumero() {
@@ -391,7 +269,7 @@ public class SusCSV {
 	}
 
 	public void setNumero(String numero) {
-		this.numero = numero;
+		this.numero = numero.trim();
 	}
 
 	public String getComplemento() {
@@ -399,7 +277,7 @@ public class SusCSV {
 	}
 
 	public void setComplemento(String complemento) {
-		this.complemento = complemento;
+		this.complemento = complemento.trim();
 	}
 
 	public String getBairro() {
@@ -407,7 +285,7 @@ public class SusCSV {
 	}
 
 	public void setBairro(String bairro) {
-		this.bairro = bairro;
+		this.bairro = bairro.trim();
 	}
 
 	public String getEstado() {
@@ -415,7 +293,7 @@ public class SusCSV {
 	}
 
 	public void setEstado(String estado) {
-		this.estado = estado;
+		this.estado = estado.trim();
 	}
 
 	public String getMunicipio() {
@@ -423,7 +301,7 @@ public class SusCSV {
 	}
 
 	public void setMunicipio(String municipio) {
-		this.municipio = municipio;
+		this.municipio = municipio.trim();
 	}
 
 	public String getTelefoneContato() {
@@ -431,7 +309,7 @@ public class SusCSV {
 	}
 
 	public void setTelefoneContato(String telefoneContato) {
-		this.telefoneContato = telefoneContato;
+		this.telefoneContato = telefoneContato.trim();
 	}
 
 	public String getTelefone() {
@@ -439,7 +317,7 @@ public class SusCSV {
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		this.telefone = telefone.trim();
 	}
 
 	public String getSintomas() {
@@ -455,7 +333,7 @@ public class SusCSV {
 	}
 
 	public void setOutrosSintomas(String outrosSintomas) {
-		this.outrosSintomas = outrosSintomas;
+		this.outrosSintomas = outrosSintomas.trim();
 	}
 
 	public String getCondicoes() {
@@ -463,7 +341,7 @@ public class SusCSV {
 	}
 
 	public void setCondicoes(String condicoes) {
-		this.condicoes = condicoes;
+		this.condicoes = condicoes.trim();
 	}
 
 	public String getEstadoTeste() {
@@ -471,7 +349,7 @@ public class SusCSV {
 	}
 
 	public void setEstadoTeste(String estadoTeste) {
-		this.estadoTeste = estadoTeste;
+		this.estadoTeste = estadoTeste.trim();
 	}
 
 	public String getTipoTeste() {
@@ -479,7 +357,7 @@ public class SusCSV {
 	}
 
 	public void setTipoTeste(String tipoTeste) {
-		this.tipoTeste = tipoTeste;
+		this.tipoTeste = tipoTeste.trim();
 	}
 
 	public String getTesteSorologico() {
@@ -487,7 +365,7 @@ public class SusCSV {
 	}
 
 	public void setTesteSorologico(String testeSorologico) {
-		this.testeSorologico = testeSorologico;
+		this.testeSorologico = testeSorologico.trim();
 	}
 
 	public String getDataTesteSorologico() {
@@ -495,7 +373,7 @@ public class SusCSV {
 	}
 
 	public void setDataTesteSorologico(String dataTesteSorologico) {
-		this.dataTesteSorologico = dataTesteSorologico;
+		this.dataTesteSorologico = dataTesteSorologico.trim();
 	}
 
 	public String getResultadoTeste() {
@@ -503,7 +381,7 @@ public class SusCSV {
 	}
 
 	public void setResultadoTeste(String resultadoTeste) {
-		this.resultadoTeste = resultadoTeste;
+		this.resultadoTeste = resultadoTeste.trim();
 	}
 
 	public String getTipoTesteSorologico() {
@@ -511,7 +389,7 @@ public class SusCSV {
 	}
 
 	public void setTipoTesteSorologico(String tipoTesteSorologico) {
-		this.tipoTesteSorologico = tipoTesteSorologico;
+		this.tipoTesteSorologico = tipoTesteSorologico.trim();
 	}
 
 	public String getResultadoTesteSorologicoIgA() {
@@ -519,7 +397,7 @@ public class SusCSV {
 	}
 
 	public void setResultadoTesteSorologicoIgA(String resultadoTesteSorologicoIgA) {
-		this.resultadoTesteSorologicoIgA = resultadoTesteSorologicoIgA;
+		this.resultadoTesteSorologicoIgA = resultadoTesteSorologicoIgA.trim();
 	}
 
 	public String getResultadoTesteSorologicoIgG() {
@@ -527,7 +405,7 @@ public class SusCSV {
 	}
 
 	public void setResultadoTesteSorologicoIgG(String resultadoTesteSorologicoIgG) {
-		this.resultadoTesteSorologicoIgG = resultadoTesteSorologicoIgG;
+		this.resultadoTesteSorologicoIgG = resultadoTesteSorologicoIgG.trim();
 	}
 
 	public String getResultadoTesteSorologicoIgM() {
@@ -535,7 +413,7 @@ public class SusCSV {
 	}
 
 	public void setResultadoTesteSorologicoIgM(String resultadoTesteSorologicoIgM) {
-		this.resultadoTesteSorologicoIgM = resultadoTesteSorologicoIgM;
+		this.resultadoTesteSorologicoIgM = resultadoTesteSorologicoIgM.trim();
 	}
 
 	public String getResultadoTesteSorologicoTotais() {
@@ -543,7 +421,7 @@ public class SusCSV {
 	}
 
 	public void setResultadoTesteSorologicoTotais(String resultadoTesteSorologicoTotais) {
-		this.resultadoTesteSorologicoTotais = resultadoTesteSorologicoTotais;
+		this.resultadoTesteSorologicoTotais = resultadoTesteSorologicoTotais.trim();
 	}
 
 	public String getNumeroNotificacao() {
@@ -551,7 +429,7 @@ public class SusCSV {
 	}
 
 	public void setNumeroNotificacao(String numeroNotificacao) {
-		this.numeroNotificacao = numeroNotificacao;
+		this.numeroNotificacao = numeroNotificacao.trim();
 	}
 
 	public String getCnes() {
@@ -559,7 +437,7 @@ public class SusCSV {
 	}
 
 	public void setCnes(String cnes) {
-		this.cnes = cnes;
+		this.cnes = cnes.trim();
 	}
 
 	public String getEstadoNotificacao() {
@@ -567,7 +445,7 @@ public class SusCSV {
 	}
 
 	public void setEstadoNotificacao(String estadoNotificacao) {
-		this.estadoNotificacao = estadoNotificacao;
+		this.estadoNotificacao = estadoNotificacao.trim();
 	}
 
 	public String getMunicipioNotificacao() {
@@ -575,7 +453,7 @@ public class SusCSV {
 	}
 
 	public void setMunicipioNotificacao(String municipioNotificacao) {
-		this.municipioNotificacao = municipioNotificacao;
+		this.municipioNotificacao = municipioNotificacao.trim();
 	}
 
 	public String getOrigem() {
@@ -583,7 +461,7 @@ public class SusCSV {
 	}
 
 	public void setOrigem(String origem) {
-		this.origem = origem;
+		this.origem = origem.trim();
 	}
 
 	public String getNomeCompletoDesnormalizado() {
@@ -591,7 +469,7 @@ public class SusCSV {
 	}
 
 	public void setNomeCompletoDesnormalizado(String nomeCompletoDesnormalizado) {
-		this.nomeCompletoDesnormalizado = nomeCompletoDesnormalizado;
+		this.nomeCompletoDesnormalizado = nomeCompletoDesnormalizado.trim();
 	}
 
 	public String getCreatedAt() {
@@ -599,7 +477,7 @@ public class SusCSV {
 	}
 
 	public void setCreatedAt(String createdAt) {
-		this.createdAt = createdAt;
+		this.createdAt = createdAt.trim();
 	}
 
 	public String getUpdatedAt() {
@@ -607,7 +485,7 @@ public class SusCSV {
 	}
 
 	public void setUpdatedAt(String updatedAt) {
-		this.updatedAt = updatedAt;
+		this.updatedAt = updatedAt.trim();
 	}
 
 	public String getSourceId() {
@@ -615,7 +493,7 @@ public class SusCSV {
 	}
 
 	public void setSourceId(String sourceId) {
-		this.sourceId = sourceId;
+		this.sourceId = sourceId.trim();
 	}
 
 	public String getIdade() {
@@ -623,7 +501,7 @@ public class SusCSV {
 	}
 
 	public void setIdade(String idade) {
-		this.idade = idade;
+		this.idade = idade.trim();
 	}
 
 	public String getClassificacaoFinal() {
@@ -631,7 +509,7 @@ public class SusCSV {
 	}
 
 	public void setClassificacaoFinal(String classificacaoFinal) {
-		this.classificacaoFinal = classificacaoFinal;
+		this.classificacaoFinal = classificacaoFinal.trim();
 	}
 
 	public String getEvolucaoCaso() {
@@ -639,7 +517,7 @@ public class SusCSV {
 	}
 
 	public void setEvolucaoCaso(String evolucaoCaso) {
-		this.evolucaoCaso = evolucaoCaso;
+		this.evolucaoCaso = evolucaoCaso.trim();
 	}
 
 	public String getDataEncerramento() {
@@ -647,7 +525,7 @@ public class SusCSV {
 	}
 
 	public void setDataEncerramento(String dataEncerramento) {
-		this.dataEncerramento = dataEncerramento;
+		this.dataEncerramento = dataEncerramento.trim();
 	}
 
 	public String getDescricaoRacaCor() {
@@ -655,7 +533,7 @@ public class SusCSV {
 	}
 
 	public void setDescricaoRacaCor(String descricaoRacaCor) {
-		this.descricaoRacaCor = descricaoRacaCor;
+		this.descricaoRacaCor = descricaoRacaCor.trim();
 	}
 
 	public String getpUsuarioAlteracao() {
@@ -663,7 +541,7 @@ public class SusCSV {
 	}
 
 	public void setpUsuarioAlteracao(String pUsuarioAlteracao) {
-		this.pUsuarioAlteracao = pUsuarioAlteracao;
+		this.pUsuarioAlteracao = pUsuarioAlteracao.trim();
 	}
 
 	public String getRpa() {
@@ -671,7 +549,7 @@ public class SusCSV {
 	}
 
 	public void setRpa(String rpa) {
-		this.rpa = rpa;
+		this.rpa = rpa.trim();
 	}
 
 	public String getIdOrigem() {
@@ -679,7 +557,7 @@ public class SusCSV {
 	}
 
 	public void setIdOrigem(String idOrigem) {
-		this.idOrigem = idOrigem;
+		this.idOrigem = idOrigem.trim();
 	}
 
 	public String getDesnormalizarNome() {
@@ -687,7 +565,7 @@ public class SusCSV {
 	}
 
 	public void setDesnormalizarNome(String desnormalizarNome) {
-		this.desnormalizarNome = desnormalizarNome;
+		this.desnormalizarNome = desnormalizarNome.trim();
 	}
 
 	public String getTimestamp() {
@@ -695,7 +573,7 @@ public class SusCSV {
 	}
 
 	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+		this.timestamp = timestamp.trim();
 	}
 
 	public String getEstadoIBGE() {
@@ -703,7 +581,7 @@ public class SusCSV {
 	}
 
 	public void setEstadoIBGE(String estadoIBGE) {
-		this.estadoIBGE = estadoIBGE;
+		this.estadoIBGE = estadoIBGE.trim();
 	}
 
 	public String getEstadoNotificacaoIBGE() {
@@ -711,7 +589,7 @@ public class SusCSV {
 	}
 
 	public void setEstadoNotificacaoIBGE(String estadoNotificacaoIBGE) {
-		this.estadoNotificacaoIBGE = estadoNotificacaoIBGE;
+		this.estadoNotificacaoIBGE = estadoNotificacaoIBGE.trim();
 	}
 
 	public String getMunicipioIBGE() {
@@ -719,7 +597,7 @@ public class SusCSV {
 	}
 
 	public void setMunicipioIBGE(String municipioIBGE) {
-		this.municipioIBGE = municipioIBGE;
+		this.municipioIBGE = municipioIBGE.trim();
 	}
 
 	public String getMunicipioNotificacaoIBGE() {
@@ -727,7 +605,7 @@ public class SusCSV {
 	}
 
 	public void setMunicipioNotificacaoIBGE(String municipioNotificacaoIBGE) {
-		this.municipioNotificacaoIBGE = municipioNotificacaoIBGE;
+		this.municipioNotificacaoIBGE = municipioNotificacaoIBGE.trim();
 	}
 
 	public String getNotificadorCpf() {
@@ -735,7 +613,7 @@ public class SusCSV {
 	}
 
 	public void setNotificadorCpf(String notificadorCpf) {
-		this.notificadorCpf = notificadorCpf;
+		this.notificadorCpf = notificadorCpf.trim();
 	}
 
 	public String getNotificadorEmail() {
@@ -743,7 +621,7 @@ public class SusCSV {
 	}
 
 	public void setNotificadorEmail(String notificadorEmail) {
-		this.notificadorEmail = notificadorEmail;
+		this.notificadorEmail = notificadorEmail.trim();
 	}
 
 	public String getNotificadorNome() {
@@ -751,7 +629,7 @@ public class SusCSV {
 	}
 
 	public void setNotificadorNome(String notificadorNome) {
-		this.notificadorNome = notificadorNome;
+		this.notificadorNome = notificadorNome.trim();
 	}
 
 	public String getNotificadorCNPJ() {
@@ -759,7 +637,7 @@ public class SusCSV {
 	}
 
 	public void setNotificadorCNPJ(String notificadorCNPJ) {
-		this.notificadorCNPJ = notificadorCNPJ;
+		this.notificadorCNPJ = notificadorCNPJ.trim();
 	}
 
 	public String getCodigoClassificacaoFinal() {
@@ -767,7 +645,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoClassificacaoFinal(String codigoClassificacaoFinal) {
-		this.codigoClassificacaoFinal = codigoClassificacaoFinal;
+		this.codigoClassificacaoFinal = codigoClassificacaoFinal.trim();
 	}
 
 	public String getCodigoEvolucaoCaso() {
@@ -775,7 +653,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoEvolucaoCaso(String codigoEvolucaoCaso) {
-		this.codigoEvolucaoCaso = codigoEvolucaoCaso;
+		this.codigoEvolucaoCaso = codigoEvolucaoCaso.trim();
 	}
 
 	public String getCodigoEstadoTeste() {
@@ -783,7 +661,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoEstadoTeste(String codigoEstadoTeste) {
-		this.codigoEstadoTeste = codigoEstadoTeste;
+		this.codigoEstadoTeste = codigoEstadoTeste.trim();
 	}
 
 	public String getLabCnes() {
@@ -791,7 +669,7 @@ public class SusCSV {
 	}
 
 	public void setLabCnes(String labCnes) {
-		this.labCnes = labCnes;
+		this.labCnes = labCnes.trim();
 	}
 
 	public String getCodigoCondicoes() {
@@ -799,7 +677,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoCondicoes(String codigoCondicoes) {
-		this.codigoCondicoes = codigoCondicoes;
+		this.codigoCondicoes = codigoCondicoes.trim();
 	}
 
 	public String getCodigoResultadoTeste() {
@@ -807,7 +685,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoResultadoTeste(String codigoResultadoTeste) {
-		this.codigoResultadoTeste = codigoResultadoTeste;
+		this.codigoResultadoTeste = codigoResultadoTeste.trim();
 	}
 
 	public String getCodigoSintomas() {
@@ -815,7 +693,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoSintomas(String codigoSintomas) {
-		this.codigoSintomas = codigoSintomas;
+		this.codigoSintomas = codigoSintomas.trim();
 	}
 
 	public String getEmail() {
@@ -823,7 +701,7 @@ public class SusCSV {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.trim();
 	}
 
 	public String getComunidadeTradicional() {
@@ -831,7 +709,7 @@ public class SusCSV {
 	}
 
 	public void setComunidadeTradicional(String comunidadeTradicional) {
-		this.comunidadeTradicional = comunidadeTradicional;
+		this.comunidadeTradicional = comunidadeTradicional.trim();
 	}
 
 	public String getContemComunidadeTradicional() {
@@ -839,7 +717,7 @@ public class SusCSV {
 	}
 
 	public void setContemComunidadeTradicional(String contemComunidadeTradicional) {
-		this.contemComunidadeTradicional = contemComunidadeTradicional;
+		this.contemComunidadeTradicional = contemComunidadeTradicional.trim();
 	}
 
 	public String getVersaoFormulario() {
@@ -847,7 +725,7 @@ public class SusCSV {
 	}
 
 	public void setVersaoFormulario(String versaoFormulario) {
-		this.versaoFormulario = versaoFormulario;
+		this.versaoFormulario = versaoFormulario.trim();
 	}
 
 	public String getCodigoResultadoTesteSorologicoIgM() {
@@ -855,7 +733,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoResultadoTesteSorologicoIgM(String codigoResultadoTesteSorologicoIgM) {
-		this.codigoResultadoTesteSorologicoIgM = codigoResultadoTesteSorologicoIgM;
+		this.codigoResultadoTesteSorologicoIgM = codigoResultadoTesteSorologicoIgM.trim();
 	}
 
 	public String getCodigoResultadoTesteSorologicoIgG() {
@@ -863,7 +741,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoResultadoTesteSorologicoIgG(String codigoResultadoTesteSorologicoIgG) {
-		this.codigoResultadoTesteSorologicoIgG = codigoResultadoTesteSorologicoIgG;
+		this.codigoResultadoTesteSorologicoIgG = codigoResultadoTesteSorologicoIgG.trim();
 	}
 
 	public String getCodigoTipoTesteSorologico() {
@@ -871,7 +749,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoTipoTesteSorologico(String codigoTipoTesteSorologico) {
-		this.codigoTipoTesteSorologico = codigoTipoTesteSorologico;
+		this.codigoTipoTesteSorologico = codigoTipoTesteSorologico.trim();
 	}
 
 	public String getCodigoTesteSorologico() {
@@ -879,7 +757,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoTesteSorologico(String codigoTesteSorologico) {
-		this.codigoTesteSorologico = codigoTesteSorologico;
+		this.codigoTesteSorologico = codigoTesteSorologico.trim();
 	}
 
 	public String getCodigoTipoTeste() {
@@ -887,7 +765,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoTipoTeste(String codigoTipoTeste) {
-		this.codigoTipoTeste = codigoTipoTeste;
+		this.codigoTipoTeste = codigoTipoTeste.trim();
 	}
 
 	public String getCodigoProfissionalSeguranca() {
@@ -895,7 +773,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoProfissionalSeguranca(String codigoProfissionalSeguranca) {
-		this.codigoProfissionalSeguranca = codigoProfissionalSeguranca;
+		this.codigoProfissionalSeguranca = codigoProfissionalSeguranca.trim();
 	}
 
 	public String getCodigoProfissionalSaude() {
@@ -903,7 +781,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoProfissionalSaude(String codigoProfissionalSaude) {
-		this.codigoProfissionalSaude = codigoProfissionalSaude;
+		this.codigoProfissionalSaude = codigoProfissionalSaude.trim();
 	}
 
 	public String getCodigoTemCpf() {
@@ -911,7 +789,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoTemCpf(String codigoTemCpf) {
-		this.codigoTemCpf = codigoTemCpf;
+		this.codigoTemCpf = codigoTemCpf.trim();
 	}
 
 	public String getCodigoSexo() {
@@ -919,7 +797,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoSexo(String codigoSexo) {
-		this.codigoSexo = codigoSexo;
+		this.codigoSexo = codigoSexo.trim();
 	}
 
 	public String getCodigoEstrangeiro() {
@@ -927,7 +805,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoEstrangeiro(String codigoEstrangeiro) {
-		this.codigoEstrangeiro = codigoEstrangeiro;
+		this.codigoEstrangeiro = codigoEstrangeiro.trim();
 	}
 
 	public String getCodigoCbo() {
@@ -935,7 +813,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoCbo(String codigoCbo) {
-		this.codigoCbo = codigoCbo;
+		this.codigoCbo = codigoCbo.trim();
 	}
 
 	public String getCodigoPaisOrigem() {
@@ -943,7 +821,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoPaisOrigem(String codigoPaisOrigem) {
-		this.codigoPaisOrigem = codigoPaisOrigem;
+		this.codigoPaisOrigem = codigoPaisOrigem.trim();
 	}
 
 	public String getCodigoResultadoTesteSorologicoTotais() {
@@ -951,7 +829,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoResultadoTesteSorologicoTotais(String codigoResultadoTesteSorologicoTotais) {
-		this.codigoResultadoTesteSorologicoTotais = codigoResultadoTesteSorologicoTotais;
+		this.codigoResultadoTesteSorologicoTotais = codigoResultadoTesteSorologicoTotais.trim();
 	}
 
 	public String getCodigoResultadoTesteSorologicoIgA() {
@@ -959,7 +837,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoResultadoTesteSorologicoIgA(String codigoResultadoTesteSorologicoIgA) {
-		this.codigoResultadoTesteSorologicoIgA = codigoResultadoTesteSorologicoIgA;
+		this.codigoResultadoTesteSorologicoIgA = codigoResultadoTesteSorologicoIgA.trim();
 	}
 
 	public String getCodigoComunidadeTradicional() {
@@ -967,7 +845,7 @@ public class SusCSV {
 	}
 
 	public void setCodigoComunidadeTradicional(String codigoComunidadeTradicional) {
-		this.codigoComunidadeTradicional = codigoComunidadeTradicional;
+		this.codigoComunidadeTradicional = codigoComunidadeTradicional.trim();
 	}
 
 	@Override

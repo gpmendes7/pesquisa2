@@ -7,19 +7,15 @@ public class PacienteCSV {
 	private String dataNascimento;
 	private String municipioNotificacao;
 	private String racaCor;
-	
-	public PacienteCSV() {
-	
-	}
 
 	public PacienteCSV(String cpf, String nomeCompleto, 
 			           String dataNascimento, String municipioNotificacao, 
 			           String racaCor) {
-		this.cpf = cpf;
-		this.nomeCompleto = nomeCompleto;
-		this.dataNascimento = dataNascimento;
-		this.municipioNotificacao = municipioNotificacao;
-		this.racaCor = racaCor;
+		this.cpf = cpf.trim();
+		this.nomeCompleto = nomeCompleto.trim();
+		this.dataNascimento = dataNascimento.trim();
+		this.municipioNotificacao = municipioNotificacao.trim();
+		this.racaCor = racaCor.trim();
 	}
 
 
@@ -29,7 +25,7 @@ public class PacienteCSV {
 
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf = cpf.trim();
 	}
 
 
@@ -39,7 +35,7 @@ public class PacienteCSV {
 
 
 	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+		this.nomeCompleto = nomeCompleto.trim();
 	}
 
 
@@ -49,7 +45,7 @@ public class PacienteCSV {
 
 
 	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
+		this.dataNascimento = dataNascimento.trim();
 	}
 
 
@@ -59,7 +55,7 @@ public class PacienteCSV {
 
 
 	public void setMunicipioNotificacao(String municipioNotificacao) {
-		this.municipioNotificacao = municipioNotificacao;
+		this.municipioNotificacao = municipioNotificacao.trim();
 	}
 
 	public String getRacaCor() {
@@ -67,6 +63,6 @@ public class PacienteCSV {
 	}
 
 	public void setRacaCor(String racaCor) {
-		this.racaCor = racaCor;
+		this.racaCor = racaCor.trim();
 	}
 }
