@@ -1,8 +1,8 @@
-package modelo;
+package csv;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class Sus {
+public class SusCSV {
 	
 	private String dataNascimento;
 	private String dataNotificacao;
@@ -104,10 +104,10 @@ public class Sus {
 	private String codigoResultadoTesteSorologicoIgA;
 	private String codigoComunidadeTradicional;
 	
-	public Sus() {
+	public SusCSV() {
 	}
 
-	public Sus(String dataNascimento, String dataNotificacao, String dataInicioSintomas, String dataTeste,
+	public SusCSV(String dataNascimento, String dataNotificacao, String dataInicioSintomas, String dataTeste,
 			String pUsuario, String estrangeiro, String profissionalSaude, String profissionalSeguranca, String cbo,
 			String cpf, String cns, String nomeCompleto, String nomeMae, String paisOrigem, String sexo, String racaCor,
 			String etnia, String cep, String passaporte, String logradouro, String numero, String complemento,

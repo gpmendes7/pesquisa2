@@ -1,4 +1,4 @@
-package banco;
+package app;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,14 +23,14 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import csv.SusCSV;
 import modelo.Notificacao;
 import modelo.Paciente;
-import modelo.Sus;
 
 public class SalvarBase {
 
 	
-private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionMappingStrategy<Sus>();;
+private static ColumnPositionMappingStrategy<SusCSV> strategy = new ColumnPositionMappingStrategy<SusCSV>();;
 	
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("sus");
 	private static EntityManager em = emf.createEntityManager();
@@ -44,7 +44,7 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 	public static void main(String[] args)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, ParseException {
 	
-		strategy.setType(Sus.class);
+		strategy.setType(SusCSV.class);
 
 		String[] colunas = { "dataNascimento", "dataNotificacao", "dataInicioSintomas", "dataTeste",
 							 "pUsuario", "estrangeiro", "profissionalSaude", "profissionalSeguranca", "cbo",
@@ -98,17 +98,17 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 			EntityTransaction tx = em.getTransaction();
 			tx.begin();
 			
-			CsvToBean<Sus> csvToBean = new CsvToBeanBuilder<Sus>(reader)
+			CsvToBean<SusCSV> csvToBean = new CsvToBeanBuilder<SusCSV>(reader)
 											.withMappingStrategy(strategy)
-											.withType(Sus.class)
+											.withType(SusCSV.class)
 											.withSeparator(';')
 											.build();
 			
-			Iterator<Sus> iterator = csvToBean.iterator();
+			Iterator<SusCSV> iterator = csvToBean.iterator();
 			
 			while(iterator.hasNext()) {
-				Sus sus = iterator.next();
-				Notificacao notificacao = gerarNotificacao(sus);
+				SusCSV susCSV = iterator.next();
+				Notificacao notificacao = gerarNotificacao(susCSV);
 				
 				String nomeCompleto = removeAcentos(notificacao.getNomeCompleto().trim().toUpperCase());
 				String cpf = notificacao.getCpf().trim();
@@ -148,42 +148,42 @@ private static ColumnPositionMappingStrategy<Sus> strategy = new ColumnPositionM
 	public static boolean naoEhNuloENemVazio(String string) {
 		return string != null && !string.equals("");
 	}
-	
-	public static Notificacao gerarNotificacao(Sus sus) throws ParseException {
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-		Date dataNascimento = naoEhNuloENemVazio(sus.getDataNascimento()) ? sdf1.parse(sus.getDataNascimento()) : null;
-		Date dataNotificacao = naoEhNuloENemVazio(sus.getDataNotificacao()) ? sdf1.parse(sus.getDataNotificacao()) : null;
-		Date dataInicioSintomas = naoEhNuloENemVazio(sus.getDataInicioSintomas()) ? sdf1.parse(sus.getDataInicioSintomas()) : null;
-		Date dataTeste = naoEhNuloENemVazio(sus.getDataTeste()) ? sdf1.parse(sus.getDataTeste()) : null;
-		Date dataTesteSorologico = naoEhNuloENemVazio(sus.getDataTesteSorologico()) ? sdf1.parse(sus.getDataTesteSorologico()) : null;
-		Date dataEncerramento = naoEhNuloENemVazio(sus.getDataEncerramento()) ? sdf1.parse(sus.getDataEncerramento()) : null;
-		Date createdAt = naoEhNuloENemVazio(sus.getCreatedAt()) ? sdf1.parse(sus.getCreatedAt()) : null;
-		Date updatedAt = naoEhNuloENemVazio(sus.getUpdatedAt()) ? sdf1.parse(sus.getUpdatedAt()) : null;
+		
+	public static Notificacao gerarNotificacao(SusCSV susCSV) throws ParseException {
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		Date dataNascimento = naoEhNuloENemVazio(susCSV.getDataNascimento()) ? sdf1.parse(susCSV.getDataNascimento()) : null;
+		Date dataNotificacao = naoEhNuloENemVazio(susCSV.getDataNotificacao()) ? sdf1.parse(susCSV.getDataNotificacao()) : null;
+		Date dataInicioSintomas = naoEhNuloENemVazio(susCSV.getDataInicioSintomas()) ? sdf1.parse(susCSV.getDataInicioSintomas()) : null;
+		Date dataTeste = naoEhNuloENemVazio(susCSV.getDataTeste()) ? sdf1.parse(susCSV.getDataTeste()) : null;
+		Date dataTesteSorologico = naoEhNuloENemVazio(susCSV.getDataTesteSorologico()) ? sdf1.parse(susCSV.getDataTesteSorologico()) : null;
+		Date dataEncerramento = naoEhNuloENemVazio(susCSV.getDataEncerramento()) ? sdf1.parse(susCSV.getDataEncerramento()) : null;
+		Date createdAt = naoEhNuloENemVazio(susCSV.getCreatedAt()) ? sdf1.parse(susCSV.getCreatedAt()) : null;
+		Date updatedAt = naoEhNuloENemVazio(susCSV.getUpdatedAt()) ? sdf1.parse(susCSV.getUpdatedAt()) : null;
 		
 		return new Notificacao(dataNascimento, dataNotificacao, dataInicioSintomas, dataTeste, 
-				sus.getpUsuario(), sus.getEstrangeiro(), sus.getProfissionalSaude(), sus.getProfissionalSeguranca(), 
-				sus.getCbo(), sus.getCpf(), sus.getCns(), sus.getNomeCompleto(), 
-				sus.getNomeMae(), sus.getPaisOrigem(), sus.getSexo(), sus.getRacaCor(), 
-				sus.getEtnia(), sus.getCep(), sus.getPassaporte(), sus.getLogradouro(), 
-				sus.getNumero(), sus.getComplemento(), sus.getBairro(), sus.getEstado(), 
-				sus.getMunicipio(), sus.getTelefoneContato(), sus.getTelefone(), sus.getSintomas(),
-				sus.getOutrosSintomas(), sus.getCondicoes(), sus.getEstadoTeste(), sus.getTipoTeste(), 
-				sus.getTesteSorologico(), dataTesteSorologico, sus.getResultadoTeste(), sus.getTipoTesteSorologico(),
-				sus.getResultadoTesteSorologicoIgA(), sus.getResultadoTesteSorologicoIgG(), sus.getResultadoTesteSorologicoIgM(), sus.getResultadoTesteSorologicoTotais(),
-				sus.getNumeroNotificacao(), sus.getCnes(), sus.getEstadoNotificacao(), sus.getMunicipioNotificacao(),
-				sus.getOrigem(), sus.getNomeCompletoDesnormalizado(), createdAt, updatedAt,
-				sus.getSourceId(), sus.getIdade(), sus.getClassificacaoFinal(), sus.getEvolucaoCaso(),
-				dataEncerramento, sus.getDescricaoRacaCor(), sus.getpUsuarioAlteracao(), sus.getRpa(),
-				sus.getIdOrigem(), sus.getDesnormalizarNome(), sus.getTimestamp(), sus.getEstadoIBGE(),
-				sus.getEstadoNotificacaoIBGE(), sus.getMunicipioIBGE(), sus.getMunicipioNotificacaoIBGE(), sus.getNotificadorCpf(),
-				sus.getNotificadorEmail(), sus.getNotificadorNome(), sus.getNotificadorCNPJ(), sus.getCodigoClassificacaoFinal(),
-				sus.getCodigoEvolucaoCaso(), sus.getCodigoEstadoTeste(), sus.getLabCnes(), sus.getCodigoCondicoes(),
-				sus.getCodigoResultadoTeste(), sus.getCodigoSintomas(), sus.getEmail(), sus.getComunidadeTradicional(),
-				sus.getContemComunidadeTradicional(), sus.getVersaoFormulario(), sus.getCodigoResultadoTesteSorologicoIgM(), sus.getCodigoResultadoTesteSorologicoIgG(),
-				sus.getCodigoTipoTesteSorologico(), sus.getCodigoTesteSorologico(), sus.getCodigoTipoTeste(), sus.getCodigoProfissionalSeguranca(),
-				sus.getCodigoProfissionalSaude(), sus.getCodigoTemCpf(), sus.getCodigoSexo(), sus.getCodigoEstrangeiro(),
-				sus.getCodigoCbo(), sus.getCodigoPaisOrigem(), sus.getCodigoResultadoTesteSorologicoTotais(), sus.getCodigoResultadoTesteSorologicoIgA(),
-				sus.getCodigoComunidadeTradicional());
+				susCSV.getpUsuario(), susCSV.getEstrangeiro(), susCSV.getProfissionalSaude(), susCSV.getProfissionalSeguranca(), 
+				susCSV.getCbo(), susCSV.getCpf(), susCSV.getCns(), susCSV.getNomeCompleto(), 
+				susCSV.getNomeMae(), susCSV.getPaisOrigem(), susCSV.getSexo(), susCSV.getRacaCor(), 
+				susCSV.getEtnia(), susCSV.getCep(), susCSV.getPassaporte(), susCSV.getLogradouro(), 
+				susCSV.getNumero(), susCSV.getComplemento(), susCSV.getBairro(), susCSV.getEstado(), 
+				susCSV.getMunicipio(), susCSV.getTelefoneContato(), susCSV.getTelefone(), susCSV.getSintomas(),
+				susCSV.getOutrosSintomas(), susCSV.getCondicoes(), susCSV.getEstadoTeste(), susCSV.getTipoTeste(), 
+				susCSV.getTesteSorologico(), dataTesteSorologico, susCSV.getResultadoTeste(), susCSV.getTipoTesteSorologico(),
+				susCSV.getResultadoTesteSorologicoIgA(), susCSV.getResultadoTesteSorologicoIgG(), susCSV.getResultadoTesteSorologicoIgM(), susCSV.getResultadoTesteSorologicoTotais(),
+				susCSV.getNumeroNotificacao(), susCSV.getCnes(), susCSV.getEstadoNotificacao(), susCSV.getMunicipioNotificacao(),
+				susCSV.getOrigem(), susCSV.getNomeCompletoDesnormalizado(), createdAt, updatedAt,
+				susCSV.getSourceId(), susCSV.getIdade(), susCSV.getClassificacaoFinal(), susCSV.getEvolucaoCaso(),
+				dataEncerramento, susCSV.getDescricaoRacaCor(), susCSV.getpUsuarioAlteracao(), susCSV.getRpa(),
+				susCSV.getIdOrigem(), susCSV.getDesnormalizarNome(), susCSV.getTimestamp(), susCSV.getEstadoIBGE(),
+				susCSV.getEstadoNotificacaoIBGE(), susCSV.getMunicipioIBGE(), susCSV.getMunicipioNotificacaoIBGE(), susCSV.getNotificadorCpf(),
+				susCSV.getNotificadorEmail(), susCSV.getNotificadorNome(), susCSV.getNotificadorCNPJ(), susCSV.getCodigoClassificacaoFinal(),
+				susCSV.getCodigoEvolucaoCaso(), susCSV.getCodigoEstadoTeste(), susCSV.getLabCnes(), susCSV.getCodigoCondicoes(),
+				susCSV.getCodigoResultadoTeste(), susCSV.getCodigoSintomas(), susCSV.getEmail(), susCSV.getComunidadeTradicional(),
+				susCSV.getContemComunidadeTradicional(), susCSV.getVersaoFormulario(), susCSV.getCodigoResultadoTesteSorologicoIgM(), susCSV.getCodigoResultadoTesteSorologicoIgG(),
+				susCSV.getCodigoTipoTesteSorologico(), susCSV.getCodigoTesteSorologico(), susCSV.getCodigoTipoTeste(), susCSV.getCodigoProfissionalSeguranca(),
+				susCSV.getCodigoProfissionalSaude(), susCSV.getCodigoTemCpf(), susCSV.getCodigoSexo(), susCSV.getCodigoEstrangeiro(),
+				susCSV.getCodigoCbo(), susCSV.getCodigoPaisOrigem(), susCSV.getCodigoResultadoTesteSorologicoTotais(), susCSV.getCodigoResultadoTesteSorologicoIgA(),
+				susCSV.getCodigoComunidadeTradicional());
 	}
 	
 	public static Paciente gerarPaciente(Notificacao notificacao) {

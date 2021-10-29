@@ -1,4 +1,4 @@
-package csv;
+package app;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -18,6 +18,7 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import csv.PacienteCSV;
 import modelo.Paciente;
 
 public class GerarCSVPacientes {
