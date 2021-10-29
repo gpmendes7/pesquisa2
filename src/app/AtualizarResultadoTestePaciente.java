@@ -48,7 +48,7 @@ public class AtualizarResultadoTestePaciente {
 			em.getTransaction().commit();
 			offset += total;
 			
-			System.out.println("offset" + offset);
+			System.out.println("offset: " + offset);
 		}
 
 		em.close(); 
