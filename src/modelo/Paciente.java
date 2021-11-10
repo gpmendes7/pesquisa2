@@ -9,21 +9,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Paciente {
 	
 	@Id
 	private Long id;
-	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	@Temporal(TemporalType.DATE)
 	private Date dataNotificacao;
-	@Temporal(TemporalType.DATE)
 	private Date dataInicioSintomas;
-	@Temporal(TemporalType.DATE)
 	private Date dataTeste;
 	@Column(columnDefinition="TEXT")
 	private String pUsuario;
@@ -83,7 +77,6 @@ public class Paciente {
 	private String tipoTeste;
 	@Column(columnDefinition="TEXT")
 	private String testeSorologico;
-	@Temporal(TemporalType.DATE)
 	private Date dataTesteSorologico;
 	@Column(columnDefinition="TEXT")
 	private String resultadoTeste;
@@ -109,9 +102,7 @@ public class Paciente {
 	private String origem;
 	@Column(columnDefinition="TEXT")
 	private String nomeCompletoDesnormalizado;
-	@Temporal(TemporalType.DATE)
 	private Date createdAt;
-	@Temporal(TemporalType.DATE)
 	private Date updatedAt;
 	@Column(columnDefinition="TEXT")
 	private String sourceId;
@@ -121,7 +112,6 @@ public class Paciente {
 	private String classificacaoFinal;
 	@Column(columnDefinition="TEXT")
 	private String evolucaoCaso;
-	@Temporal(TemporalType.DATE)
 	private Date dataEncerramento;
 	@Column(columnDefinition="TEXT")
 	private String descricaoRacaCor;

@@ -150,7 +150,7 @@ private static ColumnPositionMappingStrategy<SusCSV> strategy = new ColumnPositi
 	}
 		
 	public static Notificacao gerarNotificacao(SusCSV susCSV) throws ParseException {
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 		Date dataNascimento = naoEhNuloENemVazio(susCSV.getDataNascimento()) ? sdf1.parse(susCSV.getDataNascimento()) : null;
 		Date dataNotificacao = naoEhNuloENemVazio(susCSV.getDataNotificacao()) ? sdf1.parse(susCSV.getDataNotificacao()) : null;
 		Date dataInicioSintomas = naoEhNuloENemVazio(susCSV.getDataInicioSintomas()) ? sdf1.parse(susCSV.getDataInicioSintomas()) : null;
