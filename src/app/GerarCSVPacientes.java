@@ -38,7 +38,7 @@ public class GerarCSVPacientes {
 	}
 	
 	public static void main(String[] args) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
-		emf = Persistence.createEntityManagerFactory("sus"); 
+		emf = Persistence.createEntityManagerFactory("pesquisa2"); 
 		em = emf.createEntityManager();
 		
 		List<Paciente> pacientes = new ArrayList<Paciente>();

@@ -32,7 +32,7 @@ public class SalvarBase {
 	
 private static ColumnPositionMappingStrategy<SusCSV> strategy = new ColumnPositionMappingStrategy<SusCSV>();;
 	
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("sus");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pesquisa2");
 	private static EntityManager em = emf.createEntityManager();
 	
 	private static long totalNotificacoes = 0;
